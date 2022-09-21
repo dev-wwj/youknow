@@ -1,0 +1,31 @@
+<!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+<meta name="viewport"content="width=device-width/3, user-scalable=true, initial-scale=3.0, maximum-scale=3.0, minimum-scale=3.0"></meta>
+<!-- https://gitee.com/theajack/cnchar -->
+<script src="cnchar.all.min.js"> </script>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+           function draw(val) {
+                cnchar.draw(val,{
+                    el: '#drawAnimation',
+                    type: cnchar.draw.TYPE.ANIMATION,
+                    animation:{
+                        loopAnimate: false
+                    }
+                })
+            }
+                
+            function spell() {
+                return '汉字拼音'.spell()
+            }
+        </script>
+    </head>
+    <body>
+        <div id='drawAnimation'></div>
+    </body>
+</html>
+
+
+
+
