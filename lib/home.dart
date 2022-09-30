@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:youknow/extension/color_ex.dart';
+import 'package:youknow/model/lesson.dart';
+import 'package:youknow/view/v_lesson.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,31 +13,41 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  static const pushChannel = MethodChannel('flutter.io/push_native');
-
-  void _onPressedAction() {
+  static const pushChannel = MethodChannel('flutter.io');
+  void _onPressedAction(Lesson lesson) {
     try {
-      pushChannel.invokeMethod('push_native');
+      pushChannel.invokeMethod('push_native', ["GameViewController",lesson.toJson()]);
       // ignore: empty_catches
     } on PlatformException {}
   }
 
+  Future<List<Lesson>> lessons = Lesson.lessons();
+  Future<Widget> _body() async => lessons.then((value) {
+        return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, childAspectRatio: 1/0.618),
+          itemBuilder: (BuildContext context, int index) {
+            var lesson =  value[index];
+            return LessonView(lesson:lesson, onTap: (){
+                _onPressedAction(lesson);
+            },);
+          },
+          itemCount: value.length,
+        );
+      });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lessons'),
       ),
-      body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemCount: 10,
-          itemBuilder: (BuildContext context, int index) {
-            return Card(
-              color: MyColor.random(),
-              child: TextButton(onPressed: _onPressedAction, child: Text('$index'),),
-            );
-          }),
+      body: FutureBuilder<Widget>(
+        future: _body(),
+        initialData: const SizedBox.shrink(),
+        builder: (context, snapshot) {
+          return Center(child: snapshot.data);
+        },
+      ),
     );
   }
 }

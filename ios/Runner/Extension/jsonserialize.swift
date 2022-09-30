@@ -83,6 +83,15 @@ extension Dictionary {
     }
 }
 
+extension Dictionary {
+    func toModel<T>(_ type: T.Type) -> T? where T : Codable {
+        guard let data = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted) else {
+            return nil
+        }
+        return try? JSONDecoder().decode(type, from: data)
+    }
+}
+
 extension Array {
     func jsonString() -> String {
         let optArray = self as [Any?]

@@ -18,14 +18,14 @@ extension GameViewController: WKScriptMessageHandler, WKNavigationDelegate, WKUI
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        let jsStr = "draw('一')"
+        let jsStr = "cnchar.voice.speak(text: '一', options?: ISpeakOptions): SpeechSynthesisUtterance;"
         webView.evaluateJavaScript(jsStr) { _, _ in
         
         }
         
-        webView.evaluateJavaScript("'汉字拼音'.spell()") { _, _ in
-            
-        }
+//        webView.evaluateJavaScript("'汉字拼音'.spell()") { _, _ in
+//            
+//        }
        
     }
 

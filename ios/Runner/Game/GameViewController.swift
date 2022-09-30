@@ -12,6 +12,8 @@ import WebKit
 
 class GameViewController: BaseViewController {
     
+    var lesson: Lesson? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -20,8 +22,8 @@ class GameViewController: BaseViewController {
         _ = drawing
         _ = pen
         JSTools.evaluateJavaScript("'拼音'.spell()")
-        JSTools.evaluateJavaScript("'汉字'.spell()")
-        JSTools.evaluateJavaScript("'上山'.spell()")
+        
+        JSTools.evaluateJavaScript("cnchar.spellInfo('shàng')")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -49,10 +49,10 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   device_info_plus: ^4.0.3
   provider: ^6.0.3
-
+  dio: ^4.0.6
+  expandable_page_view: ^1.0.17
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -62,10 +62,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
+    - resources/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

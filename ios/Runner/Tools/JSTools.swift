@@ -29,12 +29,8 @@ class JSTools {
     }
     
     static func evaluateJavaScript(_ javaScriptString: String) -> JSValue {
-        return tool.ctx.evaluateScript(javaScriptString)
-    }
-    
-    static func evaluateJavaScript<T>(_ jsFunc:String, _params:Any?) {
-        _params.
-        let jsString = jsFunc.appendingFormat("(%n)", _params.to)
+        let value = tool.ctx.evaluateScript(javaScriptString)!
+        return value
     }
 
 }
