@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/model/lesson.dart';
 
-class LessonView extends StatelessWidget {
+class LessonCell extends StatelessWidget {
   final Lesson lesson;
   final GestureTapCallback? onTap;
 
-  const LessonView({super.key, required this.lesson,this.onTap});
+  const LessonCell({super.key, required this.lesson,this.onTap});
 
   @override
   Widget build(BuildContext context) {

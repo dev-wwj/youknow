@@ -24,6 +24,13 @@
 		7F0B744828CB113800BD4528 /* UIColor+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0B744728CB113800BD4528 /* UIColor+Extentsion.swift */; };
 		7F40EB9828D2BFDB002D5DC0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F40EB9728D2BFDB002D5DC0 /* BaseViewController.swift */; };
 		7F66484B28DDAE6E0044400A /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F66484A28DDAE6E0044400A /* Lesson.swift */; };
+		7F7275F328F7ACE700E61E92 /* FlutterPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7275F228F7ACE600E61E92 /* FlutterPlugin.swift */; };
+		7F7275F628F7B35000E61E92 /* FlutterPlugin+Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7275F528F7B35000E61E92 /* FlutterPlugin+Route.swift */; };
+		7F7275F828F7B37300E61E92 /* FlutterPlugin+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7275F728F7B37300E61E92 /* FlutterPlugin+Method.swift */; };
+		7F7275FA28F803B100E61E92 /* define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7275F928F803B000E61E92 /* define.swift */; };
+		7F822C3328F95BC200C98FB0 /* DrawedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F822C3228F95BC200C98FB0 /* DrawedCell.swift */; };
+		7F822C3528F95CD900C98FB0 /* GameViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F822C3428F95CD900C98FB0 /* GameViewController+CollectionView.swift */; };
+		7F822C3728F95E4E00C98FB0 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F822C3628F95E4E00C98FB0 /* UIView+Extension.swift */; };
 		7FA2920D28D874EE0086AD5D /* cnchar.all.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FA2920C28D874EE0086AD5D /* cnchar.all.min.js */; };
 		7FA2921028D94BF50086AD5D /* JSTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2920F28D94BF50086AD5D /* JSTools.swift */; };
 		7FA2921828D9B9D40086AD5D /* jsonserialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2921728D9B9D40086AD5D /* jsonserialize.swift */; };
@@ -72,6 +79,13 @@
 		7F0B744728CB113800BD4528 /* UIColor+Extentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extentsion.swift"; sourceTree = "<group>"; };
 		7F40EB9728D2BFDB002D5DC0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7F66484A28DDAE6E0044400A /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		7F7275F228F7ACE600E61E92 /* FlutterPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterPlugin.swift; sourceTree = "<group>"; };
+		7F7275F528F7B35000E61E92 /* FlutterPlugin+Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlutterPlugin+Route.swift"; sourceTree = "<group>"; };
+		7F7275F728F7B37300E61E92 /* FlutterPlugin+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlutterPlugin+Method.swift"; sourceTree = "<group>"; };
+		7F7275F928F803B000E61E92 /* define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = define.swift; sourceTree = "<group>"; };
+		7F822C3228F95BC200C98FB0 /* DrawedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawedCell.swift; sourceTree = "<group>"; };
+		7F822C3428F95CD900C98FB0 /* GameViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		7F822C3628F95E4E00C98FB0 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7FA2920C28D874EE0086AD5D /* cnchar.all.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = cnchar.all.min.js; sourceTree = "<group>"; };
 		7FA2920F28D94BF50086AD5D /* JSTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSTools.swift; sourceTree = "<group>"; };
 		7FA2921728D9B9D40086AD5D /* jsonserialize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = jsonserialize.swift; sourceTree = "<group>"; };
@@ -135,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				7F0B742928C984FC00BD4528 /* GameViewController.swift */,
+				7F822C3428F95CD900C98FB0 /* GameViewController+CollectionView.swift */,
 				7F0B743D28C9CFB200BD4528 /* GameViewController+Web.swift */,
 			);
 			path = Game;
@@ -145,6 +160,7 @@
 			children = (
 				7F0B744028C9E59B00BD4528 /* Pen.swift */,
 				7F0B744228C9F04300BD4528 /* Drawing.swift */,
+				7F822C3228F95BC200C98FB0 /* DrawedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +171,7 @@
 				7FA2921728D9B9D40086AD5D /* jsonserialize.swift */,
 				7F0B744528CB113000BD4528 /* UIControl+Extension.swift */,
 				7F0B744728CB113800BD4528 /* UIColor+Extentsion.swift */,
+				7F822C3628F95E4E00C98FB0 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -165,6 +182,16 @@
 				7F66484A28DDAE6E0044400A /* Lesson.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7F7275F428F7ADA500E61E92 /* FlutterHandler */ = {
+			isa = PBXGroup;
+			children = (
+				7F7275F228F7ACE600E61E92 /* FlutterPlugin.swift */,
+				7F7275F528F7B35000E61E92 /* FlutterPlugin+Route.swift */,
+				7F7275F728F7B37300E61E92 /* FlutterPlugin+Method.swift */,
+			);
+			path = FlutterHandler;
 			sourceTree = "<group>";
 		};
 		7FA2920E28D94B8C0086AD5D /* Tools */ = {
@@ -208,6 +235,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				7F7275F428F7ADA500E61E92 /* FlutterHandler */,
 				7F66484928DDAE5D0044400A /* Model */,
 				7FA2920E28D94B8C0086AD5D /* Tools */,
 				7F0B744428CB112200BD4528 /* Extension */,
@@ -223,6 +251,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				7F40EB9728D2BFDB002D5DC0 /* BaseViewController.swift */,
+				7F7275F928F803B000E61E92 /* define.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
@@ -388,18 +417,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F822C3728F95E4E00C98FB0 /* UIView+Extension.swift in Sources */,
 				7F66484B28DDAE6E0044400A /* Lesson.swift in Sources */,
+				7F7275F828F7B37300E61E92 /* FlutterPlugin+Method.swift in Sources */,
+				7F7275F628F7B35000E61E92 /* FlutterPlugin+Route.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				7F0B744628CB113000BD4528 /* UIControl+Extension.swift in Sources */,
+				7F7275F328F7ACE700E61E92 /* FlutterPlugin.swift in Sources */,
 				7F0B742A28C984FC00BD4528 /* GameViewController.swift in Sources */,
 				7F0B743E28C9CFB200BD4528 /* GameViewController+Web.swift in Sources */,
 				7FA2921828D9B9D40086AD5D /* jsonserialize.swift in Sources */,
 				7F0B743428C9BFD800BD4528 /* RNCachingURLProtocol.m in Sources */,
+				7F822C3328F95BC200C98FB0 /* DrawedCell.swift in Sources */,
 				7FA2921028D94BF50086AD5D /* JSTools.swift in Sources */,
 				7F40EB9828D2BFDB002D5DC0 /* BaseViewController.swift in Sources */,
 				7F0B744828CB113800BD4528 /* UIColor+Extentsion.swift in Sources */,
 				7F0B743328C9BFD800BD4528 /* Reachability.m in Sources */,
 				7F0B744328C9F04300BD4528 /* Drawing.swift in Sources */,
+				7F822C3528F95CD900C98FB0 /* GameViewController+CollectionView.swift in Sources */,
+				7F7275FA28F803B100E61E92 /* define.swift in Sources */,
 				7F0B743628C9BFD800BD4528 /* NSString+Sha1.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				7F0B744128C9E59B00BD4528 /* Pen.swift in Sources */,
@@ -485,7 +521,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 554P7FNV9K;
+				DEVELOPMENT_TEAM = N8HH6TB5KH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -614,7 +650,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 554P7FNV9K;
+				DEVELOPMENT_TEAM = N8HH6TB5KH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -637,7 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 554P7FNV9K;
+				DEVELOPMENT_TEAM = N8HH6TB5KH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

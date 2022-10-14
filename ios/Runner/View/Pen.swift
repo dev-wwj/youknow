@@ -50,6 +50,18 @@ class Pen: UIControl {
             UserDefaults.standard.set(newValue, forKey: kUserDefaultPenWidth)
         }
     }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                layer.borderColor = UIColor.black.cgColor
+                imageView.tintColor = UIColor.black
+            } else {
+                layer.borderColor = UIColor.lightGray.cgColor
+                imageView.tintColor = UIColor.lightGray
+            }
+        }
+    }
 
     override var isSelected: Bool {
         didSet {
@@ -113,7 +125,8 @@ class Pen: UIControl {
     }
 
     lazy var imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "pen"))
+        let imageView = UIImageView(image: UIImage(named: "pen")?.withRenderingMode(.alwaysTemplate))
+        imageView.tintColor = UIColor.lightGray
         addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.edges.equalTo(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
@@ -126,7 +139,7 @@ class Pen: UIControl {
         layer.fillColor = UIColor.clear.cgColor
         layer.strokeColor = pickedColor.cgColor
         layer.path = paintPath.cgPath
-        layer.lineWidth = 2
+        layer.lineWidth = Pen.defaultPenWith
         layer.lineCap = .butt
         self.layer.addSublayer(layer)
         return layer
@@ -134,7 +147,7 @@ class Pen: UIControl {
 
     private lazy var paintPath: UIBezierPath = {
         let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 15, y: 42))
+        bezierPath.move(to: CGPoint(x: 10, y: 40))
         bezierPath.addCurve(to: CGPoint(x: 40, y: 40), controlPoint1: CGPoint(x: 24, y: 50), controlPoint2: CGPoint(x: 32, y: 30))
         return bezierPath
     }()
@@ -175,9 +188,11 @@ class ChirographyBar: UIView, UIPopoverPresentationControllerDelegate {
         }
     }
 
+    private let fontWidths = [2.0, 4.0, 6.0, 8.0, 10.0, 12.0]
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        [1.0, 2.0, 3.0, 4.0, 5.0, 6.0].forEach { value in
+        fontWidths.forEach { value in
             let view = Chirography(frame: .zero, width: CGFloat(value), color: UIColor(hexA: Int(Pen.defaultPenColor)))
             view.tapAction(.touchDown) { [unowned self] control in
                 self.itemTap(control as! Chirography)
@@ -199,7 +214,8 @@ class ChirographyBar: UIView, UIPopoverPresentationControllerDelegate {
         menus.forEach { view in
             view.isSelected = false
         }
-        checkedBlock?(CGFloat(menus.firstIndex(of: view) ?? 0) + 1.0)
+        let index = menus.firstIndex(of: view) ?? 0
+        checkedBlock?(fontWidths[index])
         view.isSelected = true
     }
 

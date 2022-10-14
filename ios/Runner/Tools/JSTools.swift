@@ -28,9 +28,12 @@ class JSTools {
         self.ctx  = ctx
     }
     
+    //        JSTools.evaluateJavaScript("'拼音'.spell()")
+    //        JSTools.evaluateJavaScript("cnchar.spellInfo('shàng')")
     static func evaluateJavaScript(_ javaScriptString: String) -> JSValue {
         let value = tool.ctx.evaluateScript(javaScriptString)!
         return value
     }
 
+    
 }

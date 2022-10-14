@@ -158,4 +158,11 @@ extension String {
         let json = try? JSONSerialization.jsonObject(with: self.data(using: .utf8) ?? Data(), options: .mutableContainers)
         return json
     }
+    
+    func toModel<T>(_ type: T.Type) -> T? where T : Codable {
+        guard let dic = self.jsonObject() as? Dictionary<String, Any> else {
+            return nil
+        }
+        return dic.toModel(type)
+    }
 }

@@ -18,15 +18,12 @@ extension GameViewController: WKScriptMessageHandler, WKNavigationDelegate, WKUI
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        let jsStr = "cnchar.voice.speak(text: '一', options?: ISpeakOptions): SpeechSynthesisUtterance;"
-        webView.evaluateJavaScript(jsStr) { _, _ in
-        
+        guard let char = lesson?.chars[index] else {
+            return
         }
-        
-//        webView.evaluateJavaScript("'汉字拼音'.spell()") { _, _ in
-//            
-//        }
-       
+        let jsStr = "draw('\(char)')"
+        webView.evaluateJavaScript(jsStr) { _, _ in
+        }
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {

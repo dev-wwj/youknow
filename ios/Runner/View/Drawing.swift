@@ -28,11 +28,20 @@ class Drawing: UIView  {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clear
+        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func clear(){
+        paths.removeAll()
+        setNeedsDisplay()
+    }
+    
+    func isEmpty() ->Bool {
+        return self.paths.count == 0
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -115,6 +124,5 @@ class Drawing: UIView  {
         path.lineCapStyle = .square
         return path
     }()
-    
     
 }

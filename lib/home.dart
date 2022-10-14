@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:youknow/model/lesson.dart';
-import 'package:youknow/view/v_lesson.dart';
+import 'package:youknow/view/lesson_cell.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,24 +11,23 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  static const pushChannel = MethodChannel('flutter.io');
   void _onPressedAction(Lesson lesson) {
-    try {
-      pushChannel.invokeMethod('push_native', ["GameViewController",lesson.toJson()]);
-      // ignore: empty_catches
-    } on PlatformException {}
+    GoRouter.of(context).push('/lesson', extra: lesson);
   }
 
   Future<List<Lesson>> lessons = Lesson.lessons();
   Future<Widget> _body() async => lessons.then((value) {
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, childAspectRatio: 1/0.618),
+              crossAxisCount: 2, childAspectRatio: 1 / 0.618),
           itemBuilder: (BuildContext context, int index) {
-            var lesson =  value[index];
-            return LessonView(lesson:lesson, onTap: (){
+            var lesson = value[index];
+            return LessonCell(
+              lesson: lesson,
+              onTap: () {
                 _onPressedAction(lesson);
-            },);
+              },
+            );
           },
           itemCount: value.length,
         );
@@ -39,7 +36,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Lessons'),
+        title: const Text('学前500字'),
       ),
       body: FutureBuilder<Widget>(
         future: _body(),
