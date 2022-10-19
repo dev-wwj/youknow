@@ -146,6 +146,7 @@ class GameViewController: BaseViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         collectionView.register(DrawedCell.self, forCellWithReuseIdentifier: "_cell")
+        collectionView.backgroundColor = UIColor.white
         collectionView.delegate = self
         collectionView.dataSource = self
         safeView.addSubview(collectionView)

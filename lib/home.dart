@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youknow/main.dart';
 import 'package:youknow/model/lesson.dart';
 import 'package:youknow/view/lesson_cell.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,6 @@ class HomePageState extends State<HomePage> {
     GoRouter.of(context).push('/lesson', extra: lesson);
   }
 
-  Future<List<Lesson>> lessons = Lesson.lessons();
   Future<Widget> _body() async => lessons.then((value) {
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -29,6 +29,7 @@ const channel = MethodChannel('flutter.io');
 //   channel.invokeMethod('push_native', ["GameViewController",lesson.toJson()]);
 //   // ignore: empty_catches
 // } on PlatformException {}
+late Future<List<Lesson>> lessons = Lesson.lessons();
 
 final GoRouter _router = GoRouter(routes: <GoRoute>[
   GoRoute(path: '/', builder: (context, state) => const HomePage()),

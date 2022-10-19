@@ -33,7 +33,7 @@ extension FlutterPlugin {
     
     func speak( _ text: String){
         let utterance = AVSpeechUtterance(string: text )
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        utterance.rate = 0.333
         utterance.voice = self.synthesisVoice
         self.synthesizer.speak(utterance)
     }

@@ -24,12 +24,11 @@ class LessonCell extends StatelessWidget {
               '第${lesson.index}课',
               style: const TextStyle(fontSize: 20),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _chars()),
+
+            Padding(padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 30),child:  Wrap(alignment: WrapAlignment.center,children: _chars(),),)
+
+            // Wrap(
+            //     mainAxisAlignment: MainAxisAlignment.center,
           ],
         ),
       ),
@@ -39,9 +38,9 @@ class LessonCell extends StatelessWidget {
   List<Widget> _chars() {
     List<Widget> chars = [];
     for (var c in lesson.chars) {
-      chars.add(Text(c));
+      chars.add(Padding(padding: const EdgeInsets.only(top: 3),child: Text(c),));
       chars.add(const SizedBox(
-        width: 10,
+        width: 12,
       ));
     }
     return chars;

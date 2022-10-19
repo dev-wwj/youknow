@@ -13,7 +13,7 @@ extension MyColor on Color {
   }
 
   static Color randomLightish() {
-    return Color.fromARGB(255, Random.secure().nextInt(63) + 192,
-        Random.secure().nextInt(63) + 192, Random.secure().nextInt(63) + 192);
+    return Color.fromARGB(255, Random.secure().nextInt(30) + 225,
+        Random.secure().nextInt(30) + 225, Random.secure().nextInt(30) + 225);
   }
 }
