@@ -25,17 +25,17 @@ import UIKit
     }
     
     convenience init(hexA:Int){
-        let rInt = (hexA & 0xFF000000) >> 24
-        let r = CGFloat(rInt) / 255.0;
+        let aInt = (hexA & 0xFF000000) >> 24
+        let a = CGFloat(aInt) / 255.0;
         
-        let gInt = (hexA & 0xFF0000) >> 16
-        let g = CGFloat(gInt)   / 255.0
+        let rInt = (hexA & 0xFF0000) >> 16
+        let r = CGFloat(rInt)   / 255.0
         
-        let bInt = (hexA & 0xFF00) >> 8
+        let gInt = (hexA & 0xFF00) >> 8
+        let g = CGFloat(gInt) / 255.0
+        
+        let bInt = (hexA & 0xFF)
         let b = CGFloat(bInt) / 255.0
-        
-        let aInt = (hexA & 0xFF)
-        let a = CGFloat(aInt) / 255.0
         self.init(red: r, green: g, blue: b, alpha: a)
     }
     //16进制颜色

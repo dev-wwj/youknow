@@ -13,19 +13,19 @@ import WebKit
 
 class GameViewController: BaseViewController {
     
-    var lesson: Lesson? = nil
-    var index: Int = 0
-    
+    var myChars: MyChars? = nil
+        
     var images: [CellDate] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = lesson?.chars[index]
+//        title. = myChars?.char
         setupCnChar()
         _ = drawing
         _ = pen
         _ = [save, clear]
+        _ = charPicker
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,13 +46,45 @@ class GameViewController: BaseViewController {
         webView.allowsBackForwardNavigationGestures = false
         webView.navigationDelegate = self
         webView.uiDelegate = self
+        webView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(drawAnimate)))
         safeView.addSubview(webView)
         webView.snp.makeConstraints { make in
             make.top.left.equalTo(10)
-            make.right.equalTo(-10)
-            make.height.equalTo(140)
+            make.size.equalTo(CGSize(width: 140, height: 140))
         }
         return webView
+    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 60, height: 60)
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 8
+        layout.minimumLineSpacing = 8
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 15)
+        collectionView.register(DrawedCell.self, forCellWithReuseIdentifier: "_cell")
+        collectionView.backgroundColor = UIColor.white
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        safeView.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(webView)
+            make.left.equalTo(webView.snp.right).offset(8)
+            make.bottom.equalTo(webView)
+            make.right.equalToSuperview().offset(-8)
+        }
+        return collectionView
+    }()
+    
+    lazy var replay: UIButton = {
+        let button = UIButton(type: .custom)
+        button.addTarget(self, action: #selector(drawAnimate), for: .touchUpInside)
+        safeView.addSubview(button)
+        button.snp.makeConstraints { make in
+            make.edges.equalTo(webView)
+        }
+        return button
     }()
     
     lazy var drawing: Drawing = {
@@ -116,8 +148,8 @@ class GameViewController: BaseViewController {
         }
         safeView.addSubview(button)
         button.snp.makeConstraints { make in
-            make.right.equalTo(drawing)
-            make.bottom.equalTo(drawing.snp.top).offset(-8)
+            make.right.equalTo(drawing).offset(-20)
+            make.top.equalTo(drawing.snp.bottom).offset(18)
         }
         return button
     }()
@@ -125,7 +157,7 @@ class GameViewController: BaseViewController {
     lazy var clear: UIButton = {
         let button = UIButton(type: .custom)
         button.imageView?.tintColor = UIColor.lightGray
-        let image = UIImage(named: "retry")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "delete")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.tapAction(.touchUpInside) {[unowned self] _ in
             drawing.clear()
@@ -133,31 +165,25 @@ class GameViewController: BaseViewController {
         safeView.addSubview(button)
         button.snp.makeConstraints { make in
             make.right.equalTo(save.snp.left).offset(-8)
-            make.bottom.equalTo(drawing.snp.top).offset(-8)
+            make.top.equalTo(drawing.snp.bottom).offset(18)
         }
         return button
     }()
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 60, height: 60)
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 8
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        collectionView.register(DrawedCell.self, forCellWithReuseIdentifier: "_cell")
-        collectionView.backgroundColor = UIColor.white
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        safeView.addSubview(collectionView)
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(drawing.snp.bottom).offset(8)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(60)
+    lazy var charPicker: CharPickView = {
+        let view = CharPickView(myChars: myChars!) {[weak self] index in
+            self?.myChars?.index = index
+            self?.drawAnimate()
         }
-        return collectionView
+        navigationBar.addSubview(view)
+        view.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.left.equalTo(60)
+            make.right.equalTo(-60)
+            make.height.equalTo(50)
+        }
+        return view
     }()
- 
 }
 
 

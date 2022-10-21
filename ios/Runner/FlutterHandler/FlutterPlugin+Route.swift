@@ -16,11 +16,8 @@ extension FlutterPlugin {
         if path == "GameViewController" {
             let vc = GameViewController()
             if let param = argv?[1] as? String,
-               let lesson = param.toModel(Lesson.self) {
-                vc.lesson = lesson
-            }
-            if let index = argv?[2] as? Int {
-                vc.index = index
+               let myChars = param.toModel(MyChars.self) {
+                vc.myChars = myChars
             }
             navi?.pushViewController(vc, animated: true)
         }

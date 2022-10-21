@@ -15,17 +15,24 @@ extension GameViewController: WKScriptMessageHandler, WKNavigationDelegate, WKUI
         let url = URL(fileURLWithPath: path!)
         let dir = URL(string: "file://")!
         webView.loadFileURL(url, allowingReadAccessTo: dir)
+        _ = replay
     }
-
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        guard let char = lesson?.chars[index] else {
+        drawAnimate()
+    }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
+    }
+    
+    @objc func drawAnimate() {
+        guard let char = myChars?.char else {
             return
         }
         let jsStr = "draw('\(char)')"
         webView.evaluateJavaScript(jsStr) { _, _ in
+            
         }
-    }
-
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
     }
 }

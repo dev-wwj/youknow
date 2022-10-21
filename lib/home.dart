@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youknow/main.dart';
-import 'package:youknow/model/lesson.dart';
+import 'package:youknow/model/character.dart';
 import 'package:youknow/view/lesson_cell.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,26 +12,30 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  void _onPressedAction(Lesson lesson) {
-    GoRouter.of(context).push('/lesson', extra: lesson);
+  void _onPressedAction(section) {
+    myChars!.section = section;
+    GoRouter.of(context).push('/lesson', extra: myChars);
   }
 
-  Future<Widget> _body() async => lessons.then((value) {
-        return GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, childAspectRatio: 1 / 0.618),
-          itemBuilder: (BuildContext context, int index) {
-            var lesson = value[index];
-            return LessonCell(
-              lesson: lesson,
-              onTap: () {
-                _onPressedAction(lesson);
-              },
-            );
+  Future<Widget> _body() async => MyChars.locChars().then((value){
+    myChars = value;
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, childAspectRatio: 1 / 0.618),
+      itemBuilder: (BuildContext context, int index) {
+        var lesson = value.charsAt(index);
+        return LessonCell(
+          index: index,
+          chars: lesson,
+          onTap: () {
+            _onPressedAction(index);
           },
-          itemCount: value.length,
         );
-      });
+      },
+      itemCount: value.numOfSection(),
+    );
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

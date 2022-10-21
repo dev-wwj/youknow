@@ -14,7 +14,8 @@ class BaseViewController: UIViewController {
     let navigationBar = UIView()
     
     override func viewDidLoad(){
-        navigationBar.backgroundColor = UIColor.red
+        navigationBar.backgroundColor =  UIColor(hexA: 0xFF03A9F4);
+
         view.addSubview(safeView)
         view.addSubview(navigationBar)
     }
@@ -30,7 +31,7 @@ class BaseViewController: UIViewController {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         navigationBar.addSubview(label)
         label.snp.makeConstraints { make in
@@ -42,7 +43,7 @@ class BaseViewController: UIViewController {
     
     lazy var back: UIButton = {
         let button = UIButton(type: .custom)
-        button.imageView?.tintColor = UIColor.white
+        button.imageView?.tintColor = UIColor.black
         let image = UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         navigationBar.addSubview(button)
