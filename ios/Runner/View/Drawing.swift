@@ -8,15 +8,35 @@
 import Foundation
 import UIKit
 
-fileprivate struct DPath {
+
+class DPath: NSObject, NSCoding {
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(path, forKey: "path")
+        coder.encode(color, forKey: "color")
+        coder.encode(lineWidth, forKey: "lineWidth")
+    }
+    
+    required init?(coder: NSCoder) {
+        path = coder.decodeObject(forKey: "path") as! UIBezierPath
+        color = coder.decodeObject(forKey: "color") as! UIColor
+        lineWidth = coder.decodeObject(forKey: "lineWidth") as! CGFloat
+    }
+    
     var path: UIBezierPath
     let color: UIColor
     let lineWidth: CGFloat
+    
+    init(path: UIBezierPath, color: UIColor, lineWidth: CGFloat) {
+        self.path = path
+        self.color = color
+        self.lineWidth = lineWidth
+    }
 }
 
 class Drawing: UIView  {
     
-    fileprivate var paths: [DPath] = []
+    var paths: [DPath] = []
     
     var color: UIColor?
     var lineWidth: CGFloat?

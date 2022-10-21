@@ -141,10 +141,22 @@ extension CharPickView: UICollectionViewDataSource, UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(myChars.chars[indexPath.item])")
-        ScrollTo?(indexPath.item)
+        alignAt(indexPath: indexPath)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            self.endScroll()
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.endScroll()
+    }
+}
+
+extension CharPickView {
+    fileprivate func endScroll( _ indexPath: IndexPath? = .none){
         let offsetX =  self.contentOffset.x
         var center = CGPoint(x: offsetX + self.bounds.size.width/2, y: 10)
         var indexPath: IndexPath?
@@ -162,8 +174,11 @@ extension CharPickView: UICollectionViewDataSource, UICollectionViewDelegateFlow
         guard let indexPath = indexPath else {
             return assertionFailure("Not find cell")
         }
-        self.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
-        collectionView(self, didSelectItemAt: indexPath)
+        alignAt(indexPath: indexPath)
     }
     
+    private func alignAt(indexPath: IndexPath) {
+        self.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        ScrollTo?(indexPath.item)
+    }
 }

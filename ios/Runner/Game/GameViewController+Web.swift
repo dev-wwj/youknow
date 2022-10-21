@@ -19,14 +19,17 @@ extension GameViewController: WKScriptMessageHandler, WKNavigationDelegate, WKUI
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        drawAnimate()
+        _drawAnimate()
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        
     }
     
-    @objc func drawAnimate() {
+    @objc func reloadWeb(){
+        webView.reload()
+    }
+    
+    private func _drawAnimate() {
         guard let char = myChars?.char else {
             return
         }

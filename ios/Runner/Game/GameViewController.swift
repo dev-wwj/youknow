@@ -6,47 +6,66 @@
 //
 
 import Foundation
-import UIKit
 import SnapKit
+import UIKit
 import WebKit
 
-
 class GameViewController: BaseViewController {
-    
-    var myChars: MyChars? = nil
-        
+    var myChars: MyChars?
+
     var images: [CellDate] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-//        title. = myChars?.char
+        view.backgroundColor = UIColor.randomLightish()
         setupCnChar()
         _ = drawing
         _ = pen
         _ = [save, clear]
         _ = charPicker
+        
+        // 取路径
+//        let defaults = UserDefaults.standard
+//        if let savedPeople = defaults.object(forKey: "Paths") as? Data {
+//            if let paths = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) as? [DPath] {
+//                paths.forEach { _ in
+//                    NSLog("")
+//                }
+//                self.paths = paths
+//            }
+//        }
+    }
+
+    var paths:[DPath]? = nil {
+        didSet {
+            guard let paths = paths else {
+                return
+            }
+            drawing.paths = paths
+            drawing.setNeedsDisplay()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
     }
 
-    lazy var webView : WKWebView = {
+    lazy var webView: WKWebView = {
         let preferences = WKPreferences()
         preferences.javaScriptCanOpenWindowsAutomatically = true
-        preferences.setValue(true, forKey:"allowFileAccessFromFileURLs")
+        preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
         let configuration = WKWebViewConfiguration()
         configuration.preferences = preferences
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.allowsBackForwardNavigationGestures = false
         webView.navigationDelegate = self
+        webView.backgroundColor = .clear
+        webView.isOpaque = false
         webView.uiDelegate = self
-        webView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(drawAnimate)))
         safeView.addSubview(webView)
         webView.snp.makeConstraints { make in
             make.top.left.equalTo(10)
@@ -54,7 +73,7 @@ class GameViewController: BaseViewController {
         }
         return webView
     }()
-    
+
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 60, height: 60)
@@ -64,7 +83,7 @@ class GameViewController: BaseViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 15)
         collectionView.register(DrawedCell.self, forCellWithReuseIdentifier: "_cell")
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.clear
         collectionView.delegate = self
         collectionView.dataSource = self
         safeView.addSubview(collectionView)
@@ -76,19 +95,20 @@ class GameViewController: BaseViewController {
         }
         return collectionView
     }()
-    
+
     lazy var replay: UIButton = {
         let button = UIButton(type: .custom)
-        button.addTarget(self, action: #selector(drawAnimate), for: .touchUpInside)
+        button.addTarget(self, action: #selector(reloadWeb), for: .touchUpInside)
         safeView.addSubview(button)
         button.snp.makeConstraints { make in
             make.edges.equalTo(webView)
         }
         return button
     }()
-    
+
     lazy var drawing: Drawing = {
         let drawing = Drawing(color: pen.pickedColor, lineWidth: pen.pickedWidth)
+        drawing.backgroundColor = .clear
         safeView.addSubview(drawing)
         drawing.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -98,8 +118,8 @@ class GameViewController: BaseViewController {
     }()
 
     lazy var pen: Pen = {
-        let pen = Pen() { [unowned self] isSelected in
-        } didChange: {[unowned self] width, color in
+        let pen = Pen { [unowned self] _ in
+        } didChange: { [unowned self] width, color in
             drawing.lineWidth = CGFloat(width)
             drawing.color = color
         }
@@ -111,22 +131,28 @@ class GameViewController: BaseViewController {
         }
         return pen
     }()
-    
+
     lazy var save: UIButton = {
         let button = UIButton(type: .custom)
         button.imageView?.tintColor = UIColor.lightGray
         let image = UIImage(named: "favorite")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
-        button.tapAction(.touchUpInside) {[unowned self] _ in
+        button.tapAction(.touchUpInside) { [unowned self] _ in
             if drawing.isEmpty() {
                 return
             }
+            // 存储路径
+//            if let saveData = try? NSKeyedArchiver.archivedData(withRootObject: drawing.paths, requiringSecureCoding: false) {
+//                let defaluts = UserDefaults.standard
+//                defaluts.set(saveData, forKey: "Paths")
+//            }
+
             if let img = drawing.snapshot() {
                 images.append(CellDate(image: img, show: false))
-                let indexPath =  IndexPath(row: images.count - 1, section: 0)
+                let indexPath = IndexPath(row: images.count - 1, section: 0)
                 collectionView.insertItems(at: [indexPath])
                 collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {[weak self] in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
                     self?.drawing.clear()
                     let attributes = self?.collectionView.layoutAttributesForItem(at: indexPath)
                     if let frame = attributes?.frame {
@@ -153,13 +179,13 @@ class GameViewController: BaseViewController {
         }
         return button
     }()
-    
+
     lazy var clear: UIButton = {
         let button = UIButton(type: .custom)
         button.imageView?.tintColor = UIColor.lightGray
         let image = UIImage(named: "delete")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
-        button.tapAction(.touchUpInside) {[unowned self] _ in
+        button.tapAction(.touchUpInside) { [unowned self] _ in
             drawing.clear()
         }
         safeView.addSubview(button)
@@ -169,11 +195,11 @@ class GameViewController: BaseViewController {
         }
         return button
     }()
-    
+
     lazy var charPicker: CharPickView = {
-        let view = CharPickView(myChars: myChars!) {[weak self] index in
+        let view = CharPickView(myChars: myChars!) { [weak self] index in
             self?.myChars?.index = index
-            self?.drawAnimate()
+            self?.reloadWeb()
         }
         navigationBar.addSubview(view)
         view.snp.makeConstraints { make in
@@ -186,8 +212,7 @@ class GameViewController: BaseViewController {
     }()
 }
 
-
-//extension GameViewController {
+// extension GameViewController {
 //    func switchWriter(){
 //        if pen.isSelected {
 //            showWriter(true)
@@ -211,4 +236,4 @@ class GameViewController: BaseViewController {
 //        let trans = CGAffineTransform(translationX: to.x - origin.x, y: to.y - origin.y).scaledBy(x: 0.4, y: 0.4)
 //        webView.transform = trans
 //    }
-//}
+// }

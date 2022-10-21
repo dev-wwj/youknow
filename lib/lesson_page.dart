@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/global.dart';
 import 'package:youknow/main.dart';
 import 'package:youknow/view/character_view.dart';
@@ -20,8 +21,7 @@ class _LessonPageState extends State<LessonPage> {
   set showNext(value) {
     if (_showNext != value) {
       _showNext = value;
-      setState(() {
-      });
+      setState(() {});
     }
   }
 
@@ -58,26 +58,27 @@ class _LessonPageState extends State<LessonPage> {
           ),
           iconSize: 60,
         ),
-        body: SafeArea(
-          child: Stack(
+        body: Container(
+          decoration: BoxDecoration(color: MyColor.randomLightish()),
+          child: SafeArea(
+              child: Stack(
             alignment: Alignment.center,
             children: [
-              PageView.builder(itemBuilder: (context, index) {
-                return CharacterView(character: myChars.chars[index]);
-              },
+              PageView.builder(
+                itemBuilder: (context, index) {
+                  return CharacterView(character: myChars.chars[index]);
+                },
                 controller: _pageController,
                 itemCount: myChars.chars.length,
-                onPageChanged: (index){
+                onPageChanged: (index) {
                   if (myChars.switchSection(index)) {
-                    setState(() {
-                    });
+                    setState(() {});
                   }
                   showNext = myChars.indexAtSectionLast(index);
                 },
               )
             ],
-          )
+          )),
         ));
-
   }
 }

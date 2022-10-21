@@ -1,24 +1,43 @@
 <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
 <meta name="viewport" content="width=device-width/2, user-scalable=true, initial-scale=2.0, maximum-scale=2.0, minimum-scale=2.0"></meta>
 <!-- https://gitee.com/theajack/cnchar -->
-<script src="cnchar.all.min.js"> </script>
+<script src="hanzi-writer.js"> </script>
 <html>
     <head>
         <meta charset="UTF-8">
         <script>
-           function draw(val) {
-                cnchar.draw(val,{
-                    el: '#drawAnimation',
-                    type: cnchar.draw.TYPE.ANIMATION,
-                    animation:{
-                        loopAnimate: false
-                    }
-                })
-            }
+            function draw(val) {
+               var writer = HanziWriter.create('grid-background-target', val, {
+                  width: 60,
+                  height: 60,
+                  padding: 5,
+                  outlineColor: "#DDD",
+                  showOutline: true,
+                });
+                writer.hideCharacter();
+                writer.animateCharacter();
+            };
         </script>
+        <style text="text/css">
+            body{
+                background: rgba(255,255,255,0.0);
+            }
+        </style>
+        
     </head>
     <body>
-        <div id='drawAnimation'></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" id="grid-background-target">
+          <line x1="0" y1="0" x2="60" y2="60" stroke="#DDD" stroke-dasharray="2 2" />
+          <line x1="60" y1="0" x2="0" y2="60" stroke="#DDD" stroke-dasharray="2 2"/>
+          <line x1="30" y1="0" x2="30" y2="60" stroke="#DDD" stroke-dasharray="2 2"/>
+          <line x1="0" y1="30" x2="60" y2="30" stroke="#DDD" stroke-dasharray="2 2"/>
+          <line x1="0" y1="0" x2="60" y2="0" stroke="#CCC" />
+          <line x1="0" y1="0" x2="0" y2="60" stroke="#CCC" />
+          <line x1="0" y1="60" x2="60" y2="60" stroke="#CCC" />
+          <line x1="60" y1="0" x2="60" y2="60" stroke="#CCC" />
+        </svg>
+              
+<!--        <div id='drawAnimation'></div>-->
     </body>
 </html>
 

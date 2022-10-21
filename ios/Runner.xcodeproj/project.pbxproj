@@ -37,6 +37,8 @@
 		7FA2921028D94BF50086AD5D /* JSTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2920F28D94BF50086AD5D /* JSTools.swift */; };
 		7FA2921828D9B9D40086AD5D /* jsonserialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2921728D9B9D40086AD5D /* jsonserialize.swift */; };
 		7FE2672229026FBC0018285D /* cnchar.draw.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FE2672129026FBC0018285D /* cnchar.draw.min.js */; };
+		7FE26724290272E70018285D /* hanzi-writer.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FE26723290272E70018285D /* hanzi-writer.js */; };
+		7FE267282902A6BB0018285D /* FastCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE267262902A6BB0018285D /* FastCoder.m */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
@@ -95,6 +97,9 @@
 		7FA2920F28D94BF50086AD5D /* JSTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSTools.swift; sourceTree = "<group>"; };
 		7FA2921728D9B9D40086AD5D /* jsonserialize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = jsonserialize.swift; sourceTree = "<group>"; };
 		7FE2672129026FBC0018285D /* cnchar.draw.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = cnchar.draw.min.js; sourceTree = "<group>"; };
+		7FE26723290272E70018285D /* hanzi-writer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "hanzi-writer.js"; sourceTree = "<group>"; };
+		7FE267262902A6BB0018285D /* FastCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastCoder.m; sourceTree = "<group>"; };
+		7FE267272902A6BB0018285D /* FastCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCoder.h; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +150,7 @@
 		7F0B743728C9C05F00BD4528 /* chchar */ = {
 			isa = PBXGroup;
 			children = (
+				7FE26723290272E70018285D /* hanzi-writer.js */,
 				7FA2920C28D874EE0086AD5D /* cnchar.all.min.js */,
 				7FE2672129026FBC0018285D /* cnchar.draw.min.js */,
 				7F0B743828C9C06C00BD4528 /* chchar.html */,
@@ -219,6 +225,15 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		7FE267252902A6BB0018285D /* FastCoder */ = {
+			isa = PBXGroup;
+			children = (
+				7FE267262902A6BB0018285D /* FastCoder.m */,
+				7FE267272902A6BB0018285D /* FastCoder.h */,
+			);
+			path = FastCoder;
+			sourceTree = "<group>";
+		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +267,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				7FE267252902A6BB0018285D /* FastCoder */,
 				7F7275F428F7ADA500E61E92 /* FlutterHandler */,
 				7F66484928DDAE5D0044400A /* Model */,
 				7FA2920E28D94B8C0086AD5D /* Tools */,
@@ -348,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
+				7FE26724290272E70018285D /* hanzi-writer.js in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				7FE2672229026FBC0018285D /* cnchar.draw.min.js in Resources */,
 				7F0B743528C9BFD800BD4528 /* README.md in Resources */,
@@ -448,6 +465,7 @@
 				7F0B743E28C9CFB200BD4528 /* GameViewController+Web.swift in Sources */,
 				7FA2921828D9B9D40086AD5D /* jsonserialize.swift in Sources */,
 				7F0B743428C9BFD800BD4528 /* RNCachingURLProtocol.m in Sources */,
+				7FE267282902A6BB0018285D /* FastCoder.m in Sources */,
 				7F822C3328F95BC200C98FB0 /* DrawedCell.swift in Sources */,
 				7FA2921028D94BF50086AD5D /* JSTools.swift in Sources */,
 				7F40EB9828D2BFDB002D5DC0 /* BaseViewController.swift in Sources */,

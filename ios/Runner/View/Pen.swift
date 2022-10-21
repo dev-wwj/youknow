@@ -86,18 +86,14 @@ class Pen: UIControl {
         _ = shapeLayer
         _ = imageView
         tapAction(.touchUpInside) { [unowned self] _ in
-            if isSelected {
-                if showTool {
-                    chirographyBar.disMiss()
-                    colorsBar.disMiss()
-                } else {
-                    chirographyBar.show(onView: self)
-                    colorsBar.show(onView: self)
-                }
-                showTool = !showTool
-                return
+            if showTool {
+                chirographyBar.disMiss()
+                colorsBar.disMiss()
+            } else {
+                chirographyBar.show(onView: self)
+                colorsBar.show(onView: self)
             }
-            isSelected = !isSelected
+            showTool = !showTool
         }
     }
 

@@ -25,16 +25,31 @@ import UIKit
     }
     
     convenience init(hexA:Int){
-        let aInt = (hexA & 0xFF000000) >> 24
+        let rInt = (hexA & 0xFF000000) >> 24
+        let r = CGFloat(rInt) / 255.0;
+        
+        let gInt = (hexA & 0xFF0000) >> 16
+        let g = CGFloat(gInt)   / 255.0
+        
+        let bInt = (hexA & 0xFF00) >> 8
+        let b = CGFloat(bInt) / 255.0
+        
+        let aInt = (hexA & 0xFF)
+        let a = CGFloat(aInt) / 255.0
+        self.init(red: r, green: g, blue: b, alpha: a)
+    }
+    
+    convenience init(hexARGB:Int){
+        let aInt = (hexARGB & 0xFF000000) >> 24
         let a = CGFloat(aInt) / 255.0;
         
-        let rInt = (hexA & 0xFF0000) >> 16
+        let rInt = (hexARGB & 0xFF0000) >> 16
         let r = CGFloat(rInt)   / 255.0
         
-        let gInt = (hexA & 0xFF00) >> 8
+        let gInt = (hexARGB & 0xFF00) >> 8
         let g = CGFloat(gInt) / 255.0
         
-        let bInt = (hexA & 0xFF)
+        let bInt = (hexARGB & 0xFF)
         let b = CGFloat(bInt) / 255.0
         self.init(red: r, green: g, blue: b, alpha: a)
     }
@@ -118,10 +133,23 @@ import UIKit
          return self.withAlphaComponent(a)
     }
     
-    static func randomColor() -> UIColor {
+  
+}
+
+extension UIColor {
+    static func random() -> UIColor {
         return UIColor.init(red: CGFloat(arc4random()%255)/255, green: CGFloat(arc4random()%255)/255, blue: CGFloat(arc4random()%255)/255, alpha: 1.0)
     }
+    
+    static func randomLight() -> UIColor {
+        return UIColor.init(red: CGFloat(arc4random()%127 + 128)/255, green: CGFloat(arc4random()%127 + 128)/255, blue: CGFloat(arc4random()%127 + 128)/255, alpha: 1.0)
+    }
+    
+    static func randomLightish() -> UIColor {
+        return UIColor.init(red: CGFloat(arc4random()%30 + 225)/255, green: CGFloat(arc4random()%30 + 225)/255, blue: CGFloat(arc4random()%30 + 225)/255, alpha: 1.0)
+    }
 }
+
 extension String {
     public var color: UIColor? {
         let reg = "^(#|0x|0X){0,1}[0-9A-Fa-f]{6}$"
@@ -155,3 +183,5 @@ extension String {
         return self.color?.cgColor
     }
 }
+
+
