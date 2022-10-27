@@ -15,7 +15,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad(){
         navigationBar.backgroundColor =  UIColor(hexARGB: 0xFF03A9F4);
-
+        view.backgroundColor = UIColor.randomLightish()
         view.addSubview(safeView)
         view.addSubview(navigationBar)
     }
@@ -51,8 +51,34 @@ class BaseViewController: UIViewController {
         return button
     }()
     
+   private lazy var right: UIButton = {
+        let button = UIButton(type: .custom)
+        button.imageView?.tintColor = UIColor.black
+        button.isHidden = true
+//        let image = UIImage(named: "icon_grid")?.withRenderingMode(.alwaysTemplate)
+//        button.setImage(image, for: .normal)
+        navigationBar.addSubview(button)
+        button.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
+        return button
+    }()
+    
+    var rigthImage: String? {
+        didSet {
+            guard let name = rigthImage else {
+                return
+            }
+            self.right.isHidden = false
+            let image = UIImage(named: name)?.withRenderingMode(.alwaysTemplate)
+            right.setImage(image, for: .normal)
+        }
+    }
+    
     @objc func pop() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc dynamic func rightAction() {
+        
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -64,6 +90,10 @@ class BaseViewController: UIViewController {
         back.snp.updateConstraints { make in
             make.bottom.equalTo(-16)
             make.left.equalTo(16 + view.safeAreaInsets.left)
+        }
+        right.snp.updateConstraints { make in
+            make.bottom.equalTo(-16)
+            make.right.equalTo(-16 - view.safeAreaInsets.right)
         }
         var edges = view.safeAreaInsets
         edges.top += 56

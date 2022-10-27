@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/global.dart';
-import 'package:youknow/main.dart';
+import 'package:youknow/router.dart';
 import 'package:lottie/lottie.dart';
 
 class CharacterView extends StatefulWidget {

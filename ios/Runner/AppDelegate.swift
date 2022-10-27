@@ -17,7 +17,6 @@ import UIKit
         }
         GeneratedPluginRegistrant.register(with: self)
         setupFlutter(controller)
-
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
@@ -28,8 +27,12 @@ import UIKit
         window.rootViewController = navigation
         navi = navigation
         FlutterPlugin.instance.register(controller)
-        
     }
+    
+}
 
-   
+extension AppDelegate {
+    override func applicationWillTerminate(_ application: UIApplication) {
+        DrawFileManager.saveFiles()
+    }
 }

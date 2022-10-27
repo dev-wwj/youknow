@@ -12,12 +12,14 @@ import UIKit
 class DPath: NSObject, NSCoding {
     
     func encode(with coder: NSCoder) {
+        coder.encode(NSValue(cgRect: bounds), forKey: "bounds")
         coder.encode(path, forKey: "path")
         coder.encode(color, forKey: "color")
         coder.encode(lineWidth, forKey: "lineWidth")
     }
     
     required init?(coder: NSCoder) {
+        bounds = (coder.decodeObject(forKey: "bounds") as! NSValue).cgRectValue
         path = coder.decodeObject(forKey: "path") as! UIBezierPath
         color = coder.decodeObject(forKey: "color") as! UIColor
         lineWidth = coder.decodeObject(forKey: "lineWidth") as! CGFloat
@@ -27,7 +29,10 @@ class DPath: NSObject, NSCoding {
     let color: UIColor
     let lineWidth: CGFloat
     
-    init(path: UIBezierPath, color: UIColor, lineWidth: CGFloat) {
+    let bounds: CGRect
+    
+    init(bounds: CGRect, path: UIBezierPath, color: UIColor, lineWidth: CGFloat) {
+        self.bounds = bounds
         self.path = path
         self.color = color
         self.lineWidth = lineWidth
@@ -71,7 +76,7 @@ class Drawing: UIView  {
         }
         let path = UIBezierPath()
         path.move(to: point)
-        paths.append(DPath(path: path, color: color ?? UIColor.black,  lineWidth: lineWidth ?? 1))
+        paths.append(DPath(bounds:self.bounds , path: path, color: color ?? UIColor.black,  lineWidth: lineWidth ?? 1))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -144,5 +149,41 @@ class Drawing: UIView  {
         path.lineCapStyle = .square
         return path
     }()
-    
 }
+
+
+class DrawedView: UIView {
+    
+    var paths: [DPath]? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    override func draw(_ rect: CGRect) {
+        paths?.forEach { path in
+            path.color.set()
+            path.path.lineWidth = path.lineWidth
+            path.path.lineJoinStyle = .round
+            path.path.lineCapStyle = .round
+            path.path.stroke()
+        }
+    }
+    
+    convenience init(paths: [DPath]) {
+        self.init(frame: paths.first?.bounds ?? .zero)
+        self.backgroundColor = .white
+        self.paths = paths
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+

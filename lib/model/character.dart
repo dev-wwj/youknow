@@ -8,11 +8,12 @@ import 'package:youknow/extension/string_ex.dart';
 class MyChars {
   final List<String> chars;
   MyChars(this.chars);
+
   final groupSize = 10;
 
-  late int section;
+  late int section = 0;
 
-  late int index;
+  late int index = 0;
 
   Map<String, dynamic> toJson() => <String, dynamic>{
     'index': index,

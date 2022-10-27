@@ -10,15 +10,23 @@ import AVFoundation
 
 extension FlutterPlugin {
     func nativeMethod(_ argv:[Any], result: @escaping FlutterResult) {
-        guard let method = argv.first as? String, let param = argv.last as? String else {
+        guard let method = argv.first as? String, let param = argv.last else {
             return
         }
         switch method {
         case "applyingTransform":
-            result(applyingTransform(param: param))
+            result(applyingTransform(param: param as! String))
         case "speak":
-            speak(param)
+            speak(param as! String)
             break
+        case "drawCount":
+            result(drawCount())
+            break
+        case "byteAtIndex":
+            guard let index = param as? Int else {
+                return
+            }
+            result(imageDataAt(index))
         default:
             break
         }
@@ -37,5 +45,17 @@ extension FlutterPlugin {
         utterance.voice = self.synthesisVoice
         self.synthesizer.speak(utterance)
     }
+}
 
+extension FlutterPlugin {
+    func drawCount() -> Int{
+        return DrawFileManager.manager.queryCount()
+    }
+    
+    func imageDataAt(_ index: Int) -> [UInt8]? {
+        guard let data =  DrawFileManager.manager.imageDataAt(index) else  {
+            return nil
+        }
+        return [UInt8](data);
+    }
 }

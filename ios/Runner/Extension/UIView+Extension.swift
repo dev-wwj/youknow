@@ -18,4 +18,12 @@ extension UIView {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    func toPngData() -> Data? {
+        guard let image = self.snapshot() else {
+            assertionFailure("view to image fail")
+            return nil
+        }
+        return image.jpegData(compressionQuality: 0.5)
+    }
 }

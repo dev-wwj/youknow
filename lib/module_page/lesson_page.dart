@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/global.dart';
-import 'package:youknow/main.dart';
+import 'package:youknow/router.dart';
 import 'package:youknow/view/character_view.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

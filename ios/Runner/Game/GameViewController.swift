@@ -5,6 +5,7 @@
 //  Created by wangwenjian on 2022/9/8.
 //
 
+import Flutter
 import Foundation
 import SnapKit
 import UIKit
@@ -15,28 +16,21 @@ class GameViewController: BaseViewController {
 
     var images: [CellDate] = []
 
+    var cacheProtocal: CacheProtocal?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.randomLightish()
+        automaticallyAdjustsScrollViewInsets = false
         setupCnChar()
         _ = drawing
         _ = pen
         _ = [save, clear]
         _ = charPicker
-        
-        // 取路径
-//        let defaults = UserDefaults.standard
-//        if let savedPeople = defaults.object(forKey: "Paths") as? Data {
-//            if let paths = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) as? [DPath] {
-//                paths.forEach { _ in
-//                    NSLog("")
-//                }
-//                self.paths = paths
-//            }
-//        }
+        cacheProtocal = DrawFileManager.manager
+        rigthImage = "icon_grid"
     }
 
-    var paths:[DPath]? = nil {
+    var paths: [DPath]? {
         didSet {
             guard let paths = paths else {
                 return
@@ -45,7 +39,7 @@ class GameViewController: BaseViewController {
             drawing.setNeedsDisplay()
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -142,10 +136,7 @@ class GameViewController: BaseViewController {
                 return
             }
             // 存储路径
-//            if let saveData = try? NSKeyedArchiver.archivedData(withRootObject: drawing.paths, requiringSecureCoding: false) {
-//                let defaluts = UserDefaults.standard
-//                defaluts.set(saveData, forKey: "Paths")
-//            }
+            self.cacheProtocal?.addDPath(drawing.paths)
 
             if let img = drawing.snapshot() {
                 images.append(CellDate(image: img, show: false))
@@ -212,28 +203,10 @@ class GameViewController: BaseViewController {
     }()
 }
 
-// extension GameViewController {
-//    func switchWriter(){
-//        if pen.isSelected {
-//            showWriter(true)
-//        } else {
-//            showReader(true)
-//        }
-//    }
-//
-//
-//    private func drawingPackup() {
-//        let penCenter = pen.center
-//        let drawingCenter = drawing.center
-//        let trans = CGAffineTransform(translationX: penCenter.x - drawingCenter.x, y: penCenter.y - drawingCenter.y).scaledBy(x: 0.0, y: 0.0)
-//        drawing.transform =  trans
-//        drawing.alpha = 0.5
-//    }
-//
-//    private func webPutAside () {
-//        let to = CGPoint(x: 60 , y: 120)
-//        let origin = webView.center
-//        let trans = CGAffineTransform(translationX: to.x - origin.x, y: to.y - origin.y).scaledBy(x: 0.4, y: 0.4)
-//        webView.transform = trans
-//    }
-// }
+extension GameViewController {
+    override func rightAction() {
+        let vc = FlutterViewController(project: nil, initialRoute: "/draw", nibName: nil, bundle: nil)
+        FlutterPlugin.instance.register(vc)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}

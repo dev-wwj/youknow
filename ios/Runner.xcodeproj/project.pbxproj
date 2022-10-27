@@ -39,6 +39,9 @@
 		7FE2672229026FBC0018285D /* cnchar.draw.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FE2672129026FBC0018285D /* cnchar.draw.min.js */; };
 		7FE26724290272E70018285D /* hanzi-writer.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FE26723290272E70018285D /* hanzi-writer.js */; };
 		7FE267282902A6BB0018285D /* FastCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE267262902A6BB0018285D /* FastCoder.m */; };
+		7FE2672E2906826D0018285D /* DrawFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2672D2906826D0018285D /* DrawFileManager.swift */; };
+		7FE267302906AF0B0018285D /* WritedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2672F2906AF0B0018285D /* WritedController.swift */; };
+		7FE267352907775A0018285D /* DrawFileManager+Trans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE267342907775A0018285D /* DrawFileManager+Trans.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
@@ -100,6 +103,9 @@
 		7FE26723290272E70018285D /* hanzi-writer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "hanzi-writer.js"; sourceTree = "<group>"; };
 		7FE267262902A6BB0018285D /* FastCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastCoder.m; sourceTree = "<group>"; };
 		7FE267272902A6BB0018285D /* FastCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCoder.h; sourceTree = "<group>"; };
+		7FE2672D2906826D0018285D /* DrawFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawFileManager.swift; sourceTree = "<group>"; };
+		7FE2672F2906AF0B0018285D /* WritedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritedController.swift; sourceTree = "<group>"; };
+		7FE267342907775A0018285D /* DrawFileManager+Trans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawFileManager+Trans.swift"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +171,7 @@
 				7F0B742928C984FC00BD4528 /* GameViewController.swift */,
 				7F822C3428F95CD900C98FB0 /* GameViewController+CollectionView.swift */,
 				7F0B743D28C9CFB200BD4528 /* GameViewController+Web.swift */,
+				7FE2672F2906AF0B0018285D /* WritedController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -221,6 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				7FA2920F28D94BF50086AD5D /* JSTools.swift */,
+				7FE2672D2906826D0018285D /* DrawFileManager.swift */,
+				7FE267342907775A0018285D /* DrawFileManager+Trans.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -455,6 +464,7 @@
 				7F822C7729022E4900C98FB0 /* HorizontalPickerView.swift in Sources */,
 				7F822C3728F95E4E00C98FB0 /* UIView+Extension.swift in Sources */,
 				7F822C3929000ABB00C98FB0 /* MyChars.swift in Sources */,
+				7FE2672E2906826D0018285D /* DrawFileManager.swift in Sources */,
 				7F66484B28DDAE6E0044400A /* Lesson.swift in Sources */,
 				7F7275F828F7B37300E61E92 /* FlutterPlugin+Method.swift in Sources */,
 				7F7275F628F7B35000E61E92 /* FlutterPlugin+Route.swift in Sources */,
@@ -477,6 +487,8 @@
 				7F0B743628C9BFD800BD4528 /* NSString+Sha1.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				7F0B744128C9E59B00BD4528 /* Pen.swift in Sources */,
+				7FE267352907775A0018285D /* DrawFileManager+Trans.swift in Sources */,
+				7FE267302906AF0B0018285D /* WritedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

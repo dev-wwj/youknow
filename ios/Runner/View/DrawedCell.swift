@@ -28,4 +28,16 @@ class DrawedCell: UICollectionViewCell {
         }
         return imageView
     }()
+    
+    var paths: [DPath]? {
+        didSet {
+            guard let paths = paths else {
+                return
+            }
+            let view = DrawedView(paths: paths)
+            imageView.image = view.snapshot()
+        }
+    }
+    
 }
+
