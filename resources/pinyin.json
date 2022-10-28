@@ -2,265 +2,287 @@
   "单韵母": [
     {
       "latin": "a",
-      "sound": "阿"
+      "sound": "ㄚ"
     },
     {
       "latin": "o",
-      "sound": "喔"
+      "sound": "ㄛ"
     },
     {
       "latin": "e",
-      "sound": "婀"
+      "sound": "ㄜ"
     },
     {
       "latin": "i",
-      "sound": "衣"
+      "sound": "ㄧ"
     },
     {
       "latin": "u",
-      "sound": "乌"
+      "sound": "ㄨ"
     },
     {
       "latin": "ü",
-      "sound": "迂"
+      "sound": "ㄩ"
     }
   ],
   "复韵母": [
     {
       "latin": "ai",
-      "sound": "哀"
+      "sound": "ㄞ"
     },
     {
       "latin": "ei",
-      "sound": "诶"
+      "sound": "ㄟ"
     },
     {
       "latin": "ui",
-      "sound": "危"
+      "sound": "ㄨㄟ"
     },
     {
       "latin": "ao",
-      "sound": "奥"
+      "sound": "ㄠ"
     },
     {
       "latin": "ou",
-      "sound": "欧"
+      "sound": "ㄡ"
     },
     {
       "latin": "iu",
-      "sound": "悠"
+      "sound": "ㄧㄡ"
     },
     {
       "latin": "ie",
-      "sound": "耶"
+      "sound": "ㄧㄝ"
     },
     {
       "latin": "üe",
-      "sound": "约"
+      "sound": "ㄩㄝ"
     },
     {
       "latin": "er",
-      "sound": "儿"
+      "sound": "ㄦ"
     }
   ],
   "前鼻韵母": [
     {
       "latin": "an",
-      "sound": "安"
+      "sound": "ㄢ"
     },
     {
       "latin": "en",
-      "sound": "恩"
+      "sound": "ㄣ"
     },
     {
       "latin": "in",
-      "sound": "因"
+      "sound": "ㄧㄣ"
     },
     {
       "latin": "un",
-      "sound": "温"
+      "sound": "ㄨㄣ"
     },
     {
       "latin": "ün",
-      "sound": "晕"
+      "sound": "ㄩㄣ"
     }
   ],
   "后鼻韵母": [
     {
       "latin": "ang",
-      "sound": "昂"
+      "sound": "ㄤ"
     },
     {
       "latin": "eng",
-      "sound": "鞥"
+      "sound": "ㄥ"
     },
     {
       "latin": "ing",
-      "sound": "英"
+      "sound": "ㄧㄥ"
     },
     {
       "latin": "ong",
-      "sound": "翁"
+      "sound": "ㄨㄥ"
     }
   ],
   "声母": [
     {
       "latin": "b",
-      "sound": "玻"
+      "sound": "ㄅ"
     },
     {
       "latin": "p",
-      "sound": "坡"
+      "sound": "ㄆ"
     },
     {
       "latin": "m",
-      "sound": "摸"
+      "sound": "ㄇ"
     },
     {
       "latin": "f",
-      "sound": "佛"
+      "sound": "ㄈ"
     },
     {
       "latin": "d",
-      "sound": "得"
+      "sound": "ㄉ"
     },
     {
       "latin": "t",
-      "sound": "特"
+      "sound": "ㄊ"
     },
     {
       "latin": "n",
-      "sound": "讷"
+      "sound": "ㄋ"
     },
     {
       "latin": "l",
-      "sound": "勒"
+      "sound": "ㄌ"
     },
     {
       "latin": "g",
-      "sound": "哥"
+      "sound": "ㄍ"
     },
     {
       "latin": "k",
-      "sound": "科"
+      "sound": "ㄎ"
     },
     {
       "latin": "h",
-      "sound": "喝"
+      "sound": "ㄏ"
     },
     {
       "latin": "j",
-      "sound": "基"
+      "sound": "ㄐ"
     },
     {
       "latin": "q",
-      "sound": "欺"
+      "sound": "ㄑ"
     },
     {
       "latin": "x",
-      "sound": "希"
+      "sound": "ㄒ"
     },
     {
       "latin": "zh",
-      "sound": "知"
+      "sound": "ㄓ"
     },
     {
       "latin": "ch",
-      "sound": "吃"
+      "sound": "ㄔ"
     },
     {
       "latin": "sh",
-      "sound": "诗"
+      "sound": "ㄕ"
     },
     {
       "latin": "r",
-      "sound": "日"
+      "sound": "ㄖ"
     },
     {
       "latin": "z",
-      "sound": "资"
+      "sound": "ㄗ"
     },
     {
       "latin": "c",
-      "sound": "雌"
+      "sound": "ㄘ"
     },
     {
       "latin": "s",
-      "sound": "思"
+      "sound": "ㄙ"
     },
     {
       "latin": "y",
-      "sound": "医"
+      "sound": "ㄧ"
     },
     {
       "latin": "w",
-      "sound": "屋"
+      "sound": "ㄨ"
     }
   ],
   "整体认读音节": [
     {
       "latin": "zhi",
-      "sound": "知"
+      "sound": "ㄓ"
     },
     {
       "latin": "chi",
-      "sound": "吃"
+      "sound": "ㄔ"
     },
     {
       "latin": "shi",
-      "sound": "狮"
+      "sound": "ㄕ"
     },
     {
       "latin": "ri",
-      "sound": "日"
+      "sound": "ㄖ"
     },
     {
       "latin": "zi",
-      "sound": "资"
+      "sound": "ㄗ"
     },
     {
       "latin": "ci",
-      "sound": "慈"
+      "sound": "ㄘ"
     },
     {
       "latin": "si",
-      "sound": "思"
+      "sound": "ㄙ"
     },
     {
       "latin": "yi",
-      "sound": "衣"
+      "sound": "ㄧ"
     },
     {
       "latin": "wu",
-      "sound": "乌"
+      "sound": "ㄨ"
     },
     {
       "latin": "yu",
-      "sound": "迂"
+      "sound": "ㄩ"
     },
     {
       "latin": "yin",
-      "sound": "因"
+      "sound": "ㄧㄣ"
     },
     {
       "latin": "yun",
-      "sound": "晕"
+      "sound": "ㄩㄣ"
     },
     {
       "latin": "ye",
-      "sound": "夜"
+      "sound": "ㄧㄝ"
     },
     {
       "latin": "yue",
-      "sound": "月"
+      "sound": "ㄩㄝ"
     },
     {
       "latin": "yuan",
-      "sound": "圆"
+      "sound": "ㄩㄢ"
     },
     {
       "latin": "ying",
-      "sound": "鹰"
+      "sound": "ㄧㄥ"
+    }
+  ],
+  "声调": [
+    {
+      "latin": "ā",
+      "sound": "ㄚ"
+    },
+    {
+      "latin": "á",
+      "sound": "ㄚˊ"
+    },
+    {
+      "latin": "ǎ",
+      "sound": "ㄚˇ"
+    },
+    {
+      "latin": "à",
+      "sound": "ㄚˋ"
+    },
+    {
+      "latin": "a",
+      "sound": "ㄚ˙"
     }
   ]
 }

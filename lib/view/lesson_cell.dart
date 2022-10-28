@@ -44,11 +44,8 @@ class LessonCell extends StatelessWidget {
     List<Widget> chars = [];
     for (var c in this.chars) {
       chars.add(Padding(
-        padding: const EdgeInsets.only(top: 3),
-        child: Text(c),
-      ));
-      chars.add(const SizedBox(
-        width: 12,
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Text(c, style: const TextStyle(fontSize: 16, color: Color(0xFF666666)),),
       ));
     }
     return chars;

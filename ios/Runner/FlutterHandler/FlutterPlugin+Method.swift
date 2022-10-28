@@ -40,8 +40,16 @@ extension FlutterPlugin {
     }
     
     func speak( _ text: String){
-        let utterance = AVSpeechUtterance(string: text )
-        utterance.rate = 0.333
+        /**
+         AVSpeechUtterance
+         .attributedString: 无法识别中文
+         .string: 替换注音符号可以处理多音字 eg: 长 -> {zhang : ㄓㄤˇ, chang :ㄔㄤˊ}
+         */
+//        let attText = NSMutableAttributedString(string: "长", attributes: [.accessibilitySpeechIPANotation:"ㄓㄤˇ"])
+//        let utterance = AVSpeechUtterance(attributedString:attText)
+
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.rate = 0.25
         utterance.voice = self.synthesisVoice
         self.synthesizer.speak(utterance)
     }

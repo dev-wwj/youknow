@@ -6,14 +6,14 @@ import 'package:youknow/global.dart';
 import 'package:youknow/router.dart';
 import 'package:youknow/view/draw_cell.dart';
 
-class DrawPage extends StatefulWidget {
-  const DrawPage({super.key});
+class DrawIndex extends StatefulWidget {
+  const DrawIndex({super.key});
 
   @override
-  State<StatefulWidget> createState() => DrawPageState();
+  State<StatefulWidget> createState() => DrawIndexState();
 }
 
-class DrawPageState extends State<DrawPage> {
+class DrawIndexState extends State<DrawIndex> {
   int count = 0;
 
   @override

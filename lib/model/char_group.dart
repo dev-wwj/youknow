@@ -5,13 +5,13 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:youknow/extension/list_ex.dart';
 
-class Lesson {
+class CharGroup {
   final int index;
   final List<String> chars;
 
-  Lesson(this.index, this.chars);
+  CharGroup(this.index, this.chars);
 
-  Lesson.fromJson(Map<String, dynamic> map)
+  CharGroup.fromJson(Map<String, dynamic> map)
       : index = map['index'],
         chars = map['value'].cast<String>();
 
@@ -20,7 +20,7 @@ class Lesson {
         'chars': chars,
       };
 
-  static Future<List<Lesson>> lessons() async {
+  static Future<List<CharGroup>> lessons() async {
     // 读取本地文件
     Future<List> _lessonJsonFile() async {
       var json = await MList.readJsonFile('resources/lessons.json');
@@ -28,9 +28,9 @@ class Lesson {
     }
 
     return _lessonJsonFile().then((value) {
-      List<Lesson> les = [];
+      List<CharGroup> les = [];
       for (var element in value) {
-        les.add(Lesson.fromJson(element));
+        les.add(CharGroup.fromJson(element));
       }
       return les;
     }).catchError((Error error) => []);

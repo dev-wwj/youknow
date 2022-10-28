@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:go_router/go_router.dart';
 import 'package:youknow/global.dart';
-import 'package:youknow/router.dart';
 import 'package:youknow/model/character.dart';
+import 'package:youknow/model/pinyin.dart';
+import 'package:youknow/router.dart';
 
 class ModuleView extends StatefulWidget {
   const ModuleView({super.key});
@@ -47,7 +48,9 @@ class _ModuleViewState extends State<ModuleView> with TickerProviderStateMixin {
                   height: 160,
                   child: TextButton(
                     style: _buttonStyle,
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(context).push('/pinyin');
+                    },
                     child: const Text("拼音"),
                   ),
                 ),

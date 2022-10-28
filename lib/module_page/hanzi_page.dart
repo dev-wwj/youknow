@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:youknow/router.dart';
-import 'package:youknow/model/character.dart';
-import 'package:youknow/view/lesson_cell.dart';
-import 'package:go_router/go_router.dart';
+import 'package:youknow/extension/color_ex.dart';
+import 'package:youknow/global.dart';
+import 'package:youknow/view/character_view.dart';
+// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HanziPage extends StatefulWidget {
   const HanziPage({super.key});
@@ -12,47 +14,70 @@ class HanziPage extends StatefulWidget {
 }
 
 class _HanziPageState extends State<HanziPage> {
-  void _onPressedAction(section) {
-    myChars!.section = section;
-    GoRouter.of(context).push('/lesson', extra: myChars);
+  late PageController _pageController;
+
+  bool _showNext = false;
+  set showNext(value) {
+    if (_showNext != value) {
+      _showNext = value;
+      setState(() {});
+    }
   }
 
-  void _drawPageAction() {
-    GoRouter.of(context).push('/draw');
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: myChars.indexStart());
+    super.initState();
   }
-
-  Future<Widget> _body() async => MyChars.locChars().then((value){
-    myChars = value;
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, childAspectRatio: 1 / 0.618),
-      itemBuilder: (BuildContext context, int index) {
-        var lesson = value.charsAt(index);
-        return LessonCell(
-          index: index,
-          chars: lesson,
-          onTap: () {
-            _onPressedAction(index);
-          },
-        );
-      },
-      itemCount: value.numOfSection(),
-    );
-  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('500字'),
-      ),
-      body: FutureBuilder<Widget>(
-        future: _body(),
-        initialData: const SizedBox.shrink(),
-        builder: (context, snapshot) {
-          return Center(child: snapshot.data);
-        },
-      ),
-    );
+        appBar: AppBar(
+          title: Text('第${myChars.section + 1}课'),
+          actions: _showNext
+              ? [
+                  IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.navigate_next))
+                ]
+              : [],
+        ),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.miniEndDocked,
+        floatingActionButton: IconButton(
+          onPressed: () {
+            myChars.index = _pageController.page?.toInt() ?? 0;
+            channel.invokeMethod(keyRouteNative, [
+              'GameViewController',
+              jsonEncode(myChars),
+            ]);
+          },
+          icon: Image.asset(
+            'resources/images/write.png',
+          ),
+          iconSize: 60,
+        ),
+        body: Container(
+          decoration: BoxDecoration(color: MyColor.randomLightish()),
+          child: SafeArea(
+              child: Stack(
+            alignment: Alignment.center,
+            children: [
+              PageView.builder(
+                itemBuilder: (context, index) {
+                  return CharacterView(character: myChars.chars[index]);
+                },
+                controller: _pageController,
+                itemCount: myChars.chars.length,
+                onPageChanged: (index) {
+                  if (myChars.switchSection(index)) {
+                    setState(() {});
+                  }
+                  showNext = myChars.indexAtSectionLast(index);
+                },
+              )
+            ],
+          )),
+        ));
   }
 }

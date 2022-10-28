@@ -9,3 +9,11 @@ extension MList on List {
     return data;
   }
 }
+
+extension MMap on Map {
+  static Future<Map> readJsonFile(String path) async {
+    final String response = await rootBundle.loadString(path);
+    final data = json.decode(response);
+    return data;
+  }
+}
