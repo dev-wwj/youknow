@@ -44,7 +44,7 @@ class _HanziIndexState extends State<HanziIndex> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('500字'),
+        title: const Text('汉字'),
       ),
       body: FutureBuilder<Widget>(
         future: _body(),

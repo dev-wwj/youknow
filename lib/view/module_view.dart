@@ -6,8 +6,8 @@ import 'package:youknow/extension/color_ex.dart';
 import 'package:go_router/go_router.dart';
 import 'package:youknow/global.dart';
 import 'package:youknow/model/character.dart';
-import 'package:youknow/model/pinyin.dart';
 import 'package:youknow/router.dart';
+import 'dart:math' as math;
 
 class ModuleView extends StatefulWidget {
   const ModuleView({super.key});
@@ -34,76 +34,89 @@ class _ModuleViewState extends State<ModuleView> with TickerProviderStateMixin {
       color: MyColor.randomLightish(),
       width: double.infinity,
       height: double.infinity,
-      child: Center(child: RotationTransition(
-        turns: _animation,
-        child: SizedBox(
-          width: 300,
-          height: 300,
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(40, 0, 160, 140),
-                child: SizedBox(
-                  width: 100,
-                  height: 160,
-                  child: TextButton(
-                    style: _buttonStyle,
-                    onPressed: () {
-                      GoRouter.of(context).push('/pinyin');
-                    },
-                    child: const Text("拼音"),
+      child: Center(child: Stack(
+        children: [
+          RotationTransition(
+            turns: _animation,
+            child: SizedBox(
+              width: 300,
+              height: 300,
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(40, 0, 180, 140),
+                    child: SizedBox(
+                      width: 80,
+                      height: 160,
+                      child: TextButton(
+                        style: _buttonStyle,
+                        onPressed: () {
+                          GoRouter.of(context).push('/pinyin');
+                        },
+                        child: Transform.rotate(angle: math.pi/2, child: const Text('拼音')),
+                      ),
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(180, 140, 40, 0),
+                    child: SizedBox(
+                      width: 80,
+                      height: 160,
+                      child: TextButton(
+                        style: _buttonStyle,
+                        onPressed: () {
+                          GoRouter.of(context).push('/hanzi');
+                        },
+                        child:Transform.rotate(angle: math.pi/2, child: const Text('识字')),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(140, 40, 0, 180),
+                    child: SizedBox(
+                      width: 160,
+                      height: 80,
+                      child: TextButton(
+                        style: _buttonStyle,
+                        onPressed: () {
+                          MyChars.locChars().then((value) {
+                            myChars = value;
+                            channel.invokeMethod(keyRouteNative, [
+                              'GameViewController',
+                              jsonEncode(myChars),
+                            ]);
+                          });
+                        },
+                        child: const Text("涂鸦"),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 180, 140, 40),
+                    child: SizedBox(
+                      width: 160,
+                      height: 80,
+                      child: TextButton(
+                        style: _buttonStyle,
+                        onPressed: () {},
+                        child: const Text("练习"),
+                      ),
+                    ),
+                  )
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(160, 140, 40, 0),
-                child: SizedBox(
-                  width: 100,
-                  height: 160,
-                  child: TextButton(
-                    style: _buttonStyle,
-                    onPressed: () {
-                      GoRouter.of(context).push('/hanzi');
-                    },
-                    child: const Text("认字"),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(140, 40, 0, 160),
-                child: SizedBox(
-                  width: 160,
-                  height: 100,
-                  child: TextButton(
-                    style: _buttonStyle,
-                    onPressed: () {
-                      MyChars.locChars().then((value) {
-                        myChars = value;
-                        channel.invokeMethod(keyRouteNative, [
-                          'GameViewController',
-                          jsonEncode(myChars),
-                        ]);
-                      });
-                    },
-                    child: const Text("涂鸦"),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 160, 140, 40),
-                child: SizedBox(
-                  width: 160,
-                  height: 100,
-                  child: TextButton(
-                    style: _buttonStyle,
-                    onPressed: () {},
-                    child: const Text("练习"),
-                  ),
-                ),
-              )
-            ],
+            ),
           ),
-        ),
+          SizedBox(
+            width: 300,
+            height: 300,
+            child: Center(
+              child:  IconButton(onPressed: (){
+                router.push('/settings');
+              }, icon: Image.asset('resources/images/settings.png', color: MyColor.random(),), ),
+            ),
+          )
+        ],
       ),),
     );
   }
