@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/global.dart';
 import 'package:youknow/model/pinyin.dart';
+import 'package:youknow/userdefaults.dart';
 
 class PinyinView extends StatefulWidget {
 
@@ -23,7 +24,11 @@ class _PinyinViewState extends State<PinyinView> with TickerProviderStateMixin{
     // TODO: implement initState
     super.initState();
     _controller = AnimationController(vsync: this);
-    speak();
+    isAutoplay().then((value) {
+      if (value) {
+        speak();
+      }
+    });
   }
 
   @override
@@ -74,7 +79,8 @@ class _PinyinViewState extends State<PinyinView> with TickerProviderStateMixin{
   }
 
   void speak(){
-    channel.invokeMethod(keyMethodNative, ['speak', widget.pinyin.sound]);
+    spelling(widget.pinyin.sound);
+    // channel.invokeMethod(keyMethodNative, ['speak', widget.pinyin.sound]);
   }
 
 }

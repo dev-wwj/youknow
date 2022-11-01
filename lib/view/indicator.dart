@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class Indicator extends StatelessWidget {
   final String title;
 
+  final VoidCallback? onPressed;
+
   bool? showSeparator = true;
 
-  Indicator({super.key, required this.title, this.showSeparator});
+  Indicator({super.key, required this.title, this.showSeparator, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class Indicator extends StatelessWidget {
       children: [
         MaterialButton(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          onPressed: () {},
+          onPressed: onPressed,
           child: Row(
             children: [
               Text(title),

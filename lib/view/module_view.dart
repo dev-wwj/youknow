@@ -130,6 +130,4 @@ class _ModuleViewState extends State<ModuleView> with TickerProviderStateMixin {
         return MyColor.randomLight();
       })
   );
-
-
 }

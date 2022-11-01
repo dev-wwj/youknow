@@ -7,6 +7,7 @@ import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/global.dart';
 import 'package:youknow/router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:youknow/userdefaults.dart';
 
 class CharacterView extends StatefulWidget {
   const CharacterView({super.key, required this.character});
@@ -27,6 +28,11 @@ class _CharacterViewState extends State<CharacterView>
     super.initState();
     _controller = AnimationController(vsync: this);
     queryTrans();
+    isAutoplay().then((value) {
+      if (value) {
+        speak();
+      }
+    });
   }
 
   @override
@@ -43,12 +49,11 @@ class _CharacterViewState extends State<CharacterView>
         _pinying = value;
         setState(() {});
       });
-      speak();
     } on PlatformException {}
   }
 
   void speak() {
-    channel.invokeMethod(keyMethodNative, ['speak', widget.character]);
+    spelling(widget.character);
   }
 
   @override

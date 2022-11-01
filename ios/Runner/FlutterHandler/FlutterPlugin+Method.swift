@@ -16,8 +16,11 @@ extension FlutterPlugin {
         switch method {
         case "applyingTransform":
             result(applyingTransform(param: param as! String))
-        case "speak":
-            speak(param as! String)
+        case "spelling0":
+            spelling0(param as! String)
+            break
+        case "spelling1":
+            spelling1(param as! String)
             break
         case "drawCount":
             result(drawCount())
@@ -39,7 +42,10 @@ extension FlutterPlugin {
         return param.applyingTransform(.toLatin, reverse: false) ?? ""
     }
     
-    func speak( _ text: String){
+    
+    /// 女声播放
+    /// - Parameter text: 播放内容
+    func spelling0( _ text: String){
         /**
          AVSpeechUtterance
          .attributedString: 无法识别中文
@@ -47,10 +53,20 @@ extension FlutterPlugin {
          */
 //        let attText = NSMutableAttributedString(string: "长", attributes: [.accessibilitySpeechIPANotation:"ㄓㄤˇ"])
 //        let utterance = AVSpeechUtterance(attributedString:attText)
-
+        
         let utterance = AVSpeechUtterance(string: text)
-        utterance.rate = 0.25
-        utterance.voice = self.synthesisVoice
+        utterance.rate = 0.3
+        utterance.voice = self.femaleVoice
+        self.synthesizer.speak(utterance)
+    }
+    
+    
+    /// 男声播放
+    /// - Parameter text: 播放内容
+    func spelling1( _ text: String){
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.rate = 0.3
+        utterance.voice = self.maleVoice
         self.synthesizer.speak(utterance)
     }
 }

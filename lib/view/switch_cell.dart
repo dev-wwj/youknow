@@ -6,8 +6,14 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class SwitchCell extends StatefulWidget {
   final String title;
-  bool onOff = false;
-  SwitchCell({super.key, required this.title, required this.onOff});
+  bool onOff;
+  final ValueChanged<bool> onChanged;
+
+  SwitchCell(
+      {super.key,
+      required this.title,
+      required this.onOff,
+      required this.onChanged});
 
   @override
   State<StatefulWidget> createState() => _SwitchCellState();
@@ -27,6 +33,7 @@ class _SwitchCellState extends State<SwitchCell> {
                 Switch(
                     value: widget.onOff,
                     onChanged: (value) {
+                      widget.onChanged(value);
                       widget.onOff = value;
                       setState(() {});
                     })

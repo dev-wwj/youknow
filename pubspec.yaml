@@ -54,6 +54,8 @@ dev_dependencies:
   go_router: ^5.0.5
   smooth_page_indicator: ^1.0.0+2
   animations: ^2.0.7
+  shared_preferences: ^2.0.15
+  flutter_email_sender: ^5.1.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

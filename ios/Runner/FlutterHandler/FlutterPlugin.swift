@@ -21,10 +21,15 @@ class FlutterPlugin {
         }
     }
     
-    lazy var synthesisVoice: AVSpeechSynthesisVoice? = {
+    lazy var maleVoice: AVSpeechSynthesisVoice? = {
         //let voice = AVSpeechSynthesisVoice(identifier: "com.apple.ttsbundle.siri_female_zh-CN_compact")
         let voice = AVSpeechSynthesisVoice(identifier: "com.apple.ttsbundle.siri_male_zh-CN_compact")
         //let voice = AVSpeechSynthesisVoice(language: "zh-CN")
+        return voice
+    }()
+    
+    lazy var femaleVoice: AVSpeechSynthesisVoice? = {
+        let voice = AVSpeechSynthesisVoice(identifier: "com.apple.ttsbundle.siri_female_zh-CN_compact")
         return voice
     }()
     
