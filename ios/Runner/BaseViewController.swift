@@ -14,7 +14,7 @@ class BaseViewController: UIViewController {
     let navigationBar = UIView()
     
     override func viewDidLoad(){
-        navigationBar.backgroundColor =  UIColor(hexARGB: 0xFF03A9F4);
+//        navigationBar.backgroundColor =  UIColor(hexARGB: 0xFF03A9F4);
         view.backgroundColor = UIColor.randomLightish()
         view.addSubview(safeView)
         view.addSubview(navigationBar)

@@ -3,6 +3,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/router.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router,
       theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
+        primarySwatch: MyColor.createMaterialColor(MyColor.randomLight()),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     );

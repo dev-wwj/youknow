@@ -31,6 +31,7 @@ class _CharacterViewState extends State<CharacterView>
     isAutoplay().then((value) {
       if (value) {
         speak();
+        _controller.forward();
       }
     });
   }
@@ -92,7 +93,7 @@ class _CharacterViewState extends State<CharacterView>
                 width: 80, controller: _controller, onLoaded: (composition) {
                   _controller
                     ..duration = const Duration(milliseconds: 400)
-                    ..forward()
+                    // ..forward()
                     ..addStatusListener((status) {
                       switch (status) {
                         case AnimationStatus.completed:
