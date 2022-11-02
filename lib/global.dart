@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:youknow/model/character.dart';
 import 'package:youknow/model/pinyin.dart';
 import 'package:youknow/userdefaults.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+
 const keyMethodNative = 'method_native';
 const keyRouteNative = 'Route_native';
 
@@ -14,6 +16,9 @@ late MyChars myChars;
 
 late List<PinyinGroup> pyTable;
 
+/*
+* 拼读
+* */
 void spelling(String value) async {
   int voice = await getVoiceType();
   switch (voice) {
@@ -27,5 +32,19 @@ void spelling(String value) async {
       break;
   }
 }
+
+/*
+* APP 信息
+* */
+
+class AppInfo {
+  static  final deviceInfoPlugin = DeviceInfoPlugin();
+  static Future<String> version() async{
+    final deviceInfo = await deviceInfoPlugin.deviceInfo;
+    return deviceInfo.data['version.release'];
+  }
+}
+
+
 
 

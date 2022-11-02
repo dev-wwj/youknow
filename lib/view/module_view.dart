@@ -98,8 +98,10 @@ class _ModuleViewState extends State<ModuleView> with TickerProviderStateMixin {
                       height: 80,
                       child: TextButton(
                         style: _buttonStyle,
-                        onPressed: () {},
-                        child: const Text("练习"),
+                        onPressed: () {
+                          router.push('/draw');
+                        },
+                        child: const Text("笔录"),
                       ),
                     ),
                   )

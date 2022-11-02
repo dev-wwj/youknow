@@ -8,6 +8,7 @@ import 'package:youknow/view/checked_view.dart';
 import 'package:youknow/view/indicator.dart';
 import 'package:youknow/view/switch_cell.dart';
 import 'package:youknow/userdefaults.dart';
+import 'package:share_plus/share_plus.dart';
 
 class SettingsIndex extends StatefulWidget {
   const SettingsIndex({super.key});
@@ -75,7 +76,9 @@ class SettingsIndexState extends State<SettingsIndex> {
                     ),
                     child: Column(
                       children:  [
-                        Indicator(title: "分享"),
+                        Indicator(title: "分享", onPressed: (){
+                            Share.share('check out my website https://example.com', subject: '幼儿学习助手');
+                        },),
                         Indicator(title: '给个好评', showSeparator: false,),
                       ],
                     ),

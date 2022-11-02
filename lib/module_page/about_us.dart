@@ -2,18 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:youknow/global.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
-class AboutUs extends StatelessWidget {
+class AboutUs extends StatefulWidget {
   const AboutUs({super.key});
 
   @override
+  State<StatefulWidget> createState() => _AboutUsState();
+}
+
+class _AboutUsState extends State<AboutUs> {
+  @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: const Text('关于我们'),
       ),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           // color: MyColor.randomLightish(),
           child: Column(
@@ -27,7 +35,19 @@ class AboutUs extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Text('彩虹拼音 v 1.0.0'),
+              FutureBuilder(
+                builder:
+                    (BuildContext context, AsyncSnapshot<String> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return Text(snapshot.requireData);
+                  } else {
+                    return const SizedBox(
+                      height: 40,
+                    );
+                  }
+                },
+                future: _version(),
+              ),
               const SizedBox(
                 height: 60,
               ),
@@ -68,6 +88,12 @@ class AboutUs extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<String> _version() async{
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String varsion = packageInfo.version;
+    return '彩虹拼音 v$varsion';
   }
 
   void _sendEmail() {

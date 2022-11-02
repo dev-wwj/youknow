@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:youknow/global.dart';
 import 'package:youknow/router.dart';
 import 'package:youknow/view/draw_cell.dart';
+import 'package:empty_widget/empty_widget.dart';
 
 class DrawIndex extends StatefulWidget {
   const DrawIndex({super.key});
@@ -31,25 +32,32 @@ class DrawIndexState extends State<DrawIndex> {
           elevation: 0,
         ),
         body: SafeArea(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 5, childAspectRatio: 1),
-            itemBuilder: (BuildContext context, int index) {
-              return DrawCell(
-                index: index,
+          child: FutureBuilder<int>(builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done && snapshot.data! > 0) {
+              return GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5, childAspectRatio: 1),
+                itemBuilder: (BuildContext context, int index) {
+                  return DrawCell(
+                    index: index,
+                  );
+                },
+                itemCount: snapshot.data!,
               );
-            },
-            itemCount: count,
-          ),
+            }else {
+              return EmptyWidget(
+                image: 'resources/images/icon_180.png',
+                subTitle: '您还没有写字',
+                hideBackgroundAnimation: true,
+              );
+            }
+          }, future: queryItemCount(),),
         ));
   }
 
-  void queryItemCount() async {
-    Future<dynamic> value =
-        channel.invokeMethod(keyMethodNative, ['drawCount']);
-    value.then((value) {
-      count = value;
-      setState(() {});
-    });
+  Future<int> queryItemCount() async {
+    int count =
+        await channel.invokeMethod(keyMethodNative, ['drawCount']);
+    return count;
   }
 }

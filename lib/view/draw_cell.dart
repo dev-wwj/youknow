@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:ffi';
 import 'dart:typed_data';
 
@@ -6,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/global.dart';
-import 'package:youknow/router.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 
 class DrawCell extends StatefulWidget {
   final int index;
@@ -25,12 +27,15 @@ class _DrawCellState extends State<DrawCell> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getImageFromSandbox();
+    _getImageFromSandbox();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return MaterialButton(
+      onPressed: (){
+        _preview();
+      },
       color: MyColor.randomLightish(),
       shape: BeveledRectangleBorder(
         side: BorderSide(
@@ -39,8 +44,9 @@ class _DrawCellState extends State<DrawCell> {
           style: BorderStyle.solid,
         )
       ),
+      padding: EdgeInsets.zero,
       child:  FutureBuilder<Uint8List>(
-        future: getImageFromSandbox(),
+        future: _getImageFromSandbox(),
         builder: (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
@@ -53,7 +59,7 @@ class _DrawCellState extends State<DrawCell> {
     );
   }
 
-  Future<Uint8List> getImageFromSandbox() async {
+  Future<Uint8List> _getImageFromSandbox() async {
     List<int>? images = [];
     try {
       images = (await channel
@@ -63,5 +69,12 @@ class _DrawCellState extends State<DrawCell> {
       rethrow;
     }
     return Uint8List.fromList(images!);
+  }
+
+  void _preview() async {
+    Uint8List data =  await _getImageFromSandbox();
+    showImageViewer(context, MemoryImage(data), onViewerDismissed: () {
+      
+    }, backgroundColor:  MyColor.randomLightish(), useSafeArea: true, closeButtonColor: Colors.black);
   }
 }
