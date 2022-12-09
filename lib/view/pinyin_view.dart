@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -7,7 +9,6 @@ import 'package:youknow/model/pinyin.dart';
 import 'package:youknow/userdefaults.dart';
 
 class PinyinView extends StatefulWidget {
-
   final Pinyin pinyin;
 
   const PinyinView({super.key, required this.pinyin});
@@ -16,7 +17,7 @@ class PinyinView extends StatefulWidget {
   State<StatefulWidget> createState() => _PinyinViewState();
 }
 
-class _PinyinViewState extends State<PinyinView> with TickerProviderStateMixin{
+class _PinyinViewState extends State<PinyinView> with TickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -27,7 +28,6 @@ class _PinyinViewState extends State<PinyinView> with TickerProviderStateMixin{
     isAutoplay().then((value) {
       if (value) {
         speak();
-        _controller.forward();
       }
     });
   }
@@ -38,7 +38,7 @@ class _PinyinViewState extends State<PinyinView> with TickerProviderStateMixin{
       decoration: BoxDecoration(color: MyColor.randomLightish()),
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center ,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             widget.pinyin.latin,
@@ -55,32 +55,34 @@ class _PinyinViewState extends State<PinyinView> with TickerProviderStateMixin{
               if (_controller.isAnimating) {
                 return;
               }
-              _controller.forward();
               speak();
             },
             child: Lottie.asset('resources/animations/sound.json',
                 width: 80, controller: _controller, onLoaded: (composition) {
-                  _controller
-                    ..duration = const Duration(milliseconds: 400)
-                    ..addStatusListener((status) {
-                      switch (status) {
-                        case AnimationStatus.completed:
-                          _controller.reverse();
-                          break;
-                        case AnimationStatus.dismissed:
-                          break;
-                      }
-                    });
-                }),
+              _controller
+                ..duration = const Duration(milliseconds: 400)
+                ..addStatusListener((status) {
+                  switch (status) {
+                    case AnimationStatus.completed:
+                      _controller.reverse();
+                      break;
+                    case AnimationStatus.dismissed:
+                      break;
+                  }
+                });
+            }),
           ),
         ],
       ),
     );
   }
 
-  void speak(){
-    spelling(widget.pinyin.sound);
+  void speak() {
     // channel.invokeMethod(keyMethodNative, ['speak', widget.pinyin.sound]);
+    spelling(widget.pinyin.sound);
+    speakAnimate();
   }
 
+  Future<void> speakAnimate() async => await Future.delayed(
+      const Duration(milliseconds: 200), () => _controller.forward());
 }

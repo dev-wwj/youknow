@@ -1,5 +1,5 @@
 <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
-<meta name="viewport" content="width=device-width/2, user-scalable=true, initial-scale=2.0, maximum-scale=2.0, minimum-scale=2.0"></meta>
+<meta name="viewport" content="width=device-width, user-scalable=true, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
 <!-- https://gitee.com/theajack/cnchar -->
 <script src="hanzi-writer.js"> </script>
 <html>
@@ -8,9 +8,9 @@
         <script>
             function draw(val) {
                var writer = HanziWriter.create('grid-background-target', val, {
-                  width: 60,
-                  height: 60,
-                  padding: 5,
+                  width: 120,
+                  height: 120,
+                  padding: 10,
                   outlineColor: "#DDD",
                   showOutline: true,
                 });
@@ -20,21 +20,22 @@
         </script>
         <style text="text/css">
             body{
+                margin:0px;
                 background: rgba(255,255,255,0.0);
             }
         </style>
         
     </head>
     <body>
-        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" id="grid-background-target">
-          <line x1="0" y1="0" x2="60" y2="60" stroke="#DDD" stroke-dasharray="2 2" />
-          <line x1="60" y1="0" x2="0" y2="60" stroke="#DDD" stroke-dasharray="2 2"/>
-          <line x1="30" y1="0" x2="30" y2="60" stroke="#DDD" stroke-dasharray="2 2"/>
-          <line x1="0" y1="30" x2="60" y2="30" stroke="#DDD" stroke-dasharray="2 2"/>
-          <line x1="0" y1="0" x2="60" y2="0" stroke="#CCC" />
-          <line x1="0" y1="0" x2="0" y2="60" stroke="#CCC" />
-          <line x1="0" y1="60" x2="60" y2="60" stroke="#CCC" />
-          <line x1="60" y1="0" x2="60" y2="60" stroke="#CCC" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" id="grid-background-target">
+          <line x1="0" y1="0" x2="120" y2="120" stroke="#DDD" stroke-dasharray="2 2" />
+          <line x1="120" y1="0" x2="0" y2="120" stroke="#DDD" stroke-dasharray="2 2"/>
+          <line x1="60" y1="0" x2="60" y2="120" stroke="#DDD" stroke-dasharray="2 2"/>
+          <line x1="0" y1="60" x2="120" y2="60" stroke="#DDD" stroke-dasharray="2 2"/>
+          <line x1="0" y1="0" x2="120" y2="0" stroke="#CCC" />
+          <line x1="0" y1="0" x2="0" y2="120" stroke="#CCC" />
+          <line x1="0" y1="120" x2="120" y2="120" stroke="#CCC" />
+          <line x1="120" y1="0" x2="120" y2="120" stroke="#CCC" />
         </svg>
               
 <!--        <div id='drawAnimation'></div>-->

@@ -11,6 +11,14 @@ import UIKit
 class BaseViewController: UIViewController {
     let safeView = UIView()
     
+    var minorSafeWH: CGFloat {
+        get {
+            let w = CGRectGetWidth(safeView.bounds)
+            let h = CGRectGetHeight(safeView.bounds)
+            return min(w, h)
+        }
+    }
+    
     let navigationBar = UIView()
     
     override func viewDidLoad(){
@@ -82,24 +90,25 @@ class BaseViewController: UIViewController {
     }
     
     override func viewSafeAreaInsetsDidChange() {
-        self.view.layoutIfNeeded()
         navigationBar.snp.updateConstraints { make in
-            make.left.top.right.equalToSuperview()
+            make.left.equalTo(view.safeAreaInsets.left)
+            make.right.equalTo(-view.safeAreaInsets.right)
             make.height.equalTo(56 + view.safeAreaInsets.top)
         }
         back.snp.updateConstraints { make in
             make.bottom.equalTo(-16)
-            make.left.equalTo(16 + view.safeAreaInsets.left)
+            make.left.equalTo(16)
         }
         right.snp.updateConstraints { make in
-            make.bottom.equalTo(-16)
-            make.right.equalTo(-16 - view.safeAreaInsets.right)
+            make.centerY.equalTo(back)
+            make.right.equalTo(-16 )
         }
         var edges = view.safeAreaInsets
         edges.top += 56
         safeView.snp.updateConstraints { make in
             make.edges.equalTo(edges)
         }
+        self.view.layoutIfNeeded()
     }
 }
 

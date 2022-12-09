@@ -9,3 +9,8 @@ import Foundation
 
 let keyMethodNative = "method_native"
 let keyRouteNative = "Route_native"
+
+enum ViewDirection {
+    case horizontal
+    case vertical
+}

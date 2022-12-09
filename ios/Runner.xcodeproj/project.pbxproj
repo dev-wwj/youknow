@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,8 @@
 		7F0B744328C9F04300BD4528 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0B744228C9F04300BD4528 /* Drawing.swift */; };
 		7F0B744628CB113000BD4528 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0B744528CB113000BD4528 /* UIControl+Extension.swift */; };
 		7F0B744828CB113800BD4528 /* UIColor+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0B744728CB113800BD4528 /* UIColor+Extentsion.swift */; };
+		7F141AE929438CF90015BF39 /* CacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F141AE829438CF90015BF39 /* CacheProtocol.swift */; };
+		7F141AEB29438E150015BF39 /* DrawingCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F141AEA29438E150015BF39 /* DrawingCache.swift */; };
 		7F40EB9828D2BFDB002D5DC0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F40EB9728D2BFDB002D5DC0 /* BaseViewController.swift */; };
 		7F66484B28DDAE6E0044400A /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F66484A28DDAE6E0044400A /* Lesson.swift */; };
 		7F7275F328F7ACE700E61E92 /* FlutterPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7275F228F7ACE600E61E92 /* FlutterPlugin.swift */; };
@@ -40,8 +42,11 @@
 		7FE26724290272E70018285D /* hanzi-writer.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FE26723290272E70018285D /* hanzi-writer.js */; };
 		7FE267282902A6BB0018285D /* FastCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE267262902A6BB0018285D /* FastCoder.m */; };
 		7FE2672E2906826D0018285D /* DrawFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2672D2906826D0018285D /* DrawFileManager.swift */; };
-		7FE267302906AF0B0018285D /* WritedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2672F2906AF0B0018285D /* WritedController.swift */; };
 		7FE267352907775A0018285D /* DrawFileManager+Trans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE267342907775A0018285D /* DrawFileManager+Trans.swift */; };
+		7FEBDD842938C9E90023548D /* HandwritingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEBDD832938C9E90023548D /* HandwritingVC.swift */; };
+		7FEBDD8A2939D2A60023548D /* HanziWriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEBDD892939D2A60023548D /* HanziWriterView.swift */; };
+		7FEBDD8D2939D8310023548D /* WritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEBDD8C2939D8310023548D /* WritingView.swift */; };
+		7FEBDD91293DD1A50023548D /* WriterHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEBDD90293DD1A50023548D /* WriterHandleView.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
@@ -85,6 +90,8 @@
 		7F0B744228C9F04300BD4528 /* Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		7F0B744528CB113000BD4528 /* UIControl+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		7F0B744728CB113800BD4528 /* UIColor+Extentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extentsion.swift"; sourceTree = "<group>"; };
+		7F141AE829438CF90015BF39 /* CacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheProtocol.swift; sourceTree = "<group>"; };
+		7F141AEA29438E150015BF39 /* DrawingCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingCache.swift; sourceTree = "<group>"; };
 		7F40EB9728D2BFDB002D5DC0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7F66484A28DDAE6E0044400A /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		7F7275F228F7ACE600E61E92 /* FlutterPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterPlugin.swift; sourceTree = "<group>"; };
@@ -104,8 +111,11 @@
 		7FE267262902A6BB0018285D /* FastCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastCoder.m; sourceTree = "<group>"; };
 		7FE267272902A6BB0018285D /* FastCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCoder.h; sourceTree = "<group>"; };
 		7FE2672D2906826D0018285D /* DrawFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawFileManager.swift; sourceTree = "<group>"; };
-		7FE2672F2906AF0B0018285D /* WritedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritedController.swift; sourceTree = "<group>"; };
 		7FE267342907775A0018285D /* DrawFileManager+Trans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawFileManager+Trans.swift"; sourceTree = "<group>"; };
+		7FEBDD832938C9E90023548D /* HandwritingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandwritingVC.swift; sourceTree = "<group>"; };
+		7FEBDD892939D2A60023548D /* HanziWriterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanziWriterView.swift; sourceTree = "<group>"; };
+		7FEBDD8C2939D8310023548D /* WritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingView.swift; sourceTree = "<group>"; };
+		7FEBDD90293DD1A50023548D /* WriterHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterHandleView.swift; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,23 +177,12 @@
 		7F0B743C28C9CF8800BD4528 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				7F822C7529022DE900C98FB0 /* View */,
+				7FEBDD802938AA980023548D /* View */,
 				7F0B742928C984FC00BD4528 /* GameViewController.swift */,
 				7F822C3428F95CD900C98FB0 /* GameViewController+CollectionView.swift */,
 				7F0B743D28C9CFB200BD4528 /* GameViewController+Web.swift */,
-				7FE2672F2906AF0B0018285D /* WritedController.swift */,
 			);
 			path = Game;
-			sourceTree = "<group>";
-		};
-		7F0B743F28C9E57600BD4528 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7F0B744028C9E59B00BD4528 /* Pen.swift */,
-				7F0B744228C9F04300BD4528 /* Drawing.swift */,
-				7F822C3228F95BC200C98FB0 /* DrawedCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		7F0B744428CB112200BD4528 /* Extension */ = {
@@ -195,6 +194,17 @@
 				7F822C3628F95E4E00C98FB0 /* UIView+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		7F141AE729438CDA0015BF39 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				7F141AE829438CF90015BF39 /* CacheProtocol.swift */,
+				7FE2672D2906826D0018285D /* DrawFileManager.swift */,
+				7FE267342907775A0018285D /* DrawFileManager+Trans.swift */,
+				7F141AEA29438E150015BF39 /* DrawingCache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		7F66484928DDAE5D0044400A /* Model */ = {
@@ -216,20 +226,11 @@
 			path = FlutterHandler;
 			sourceTree = "<group>";
 		};
-		7F822C7529022DE900C98FB0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7F822C7629022E4900C98FB0 /* HorizontalPickerView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		7FA2920E28D94B8C0086AD5D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				7F141AE729438CDA0015BF39 /* Cache */,
 				7FA2920F28D94BF50086AD5D /* JSTools.swift */,
-				7FE2672D2906826D0018285D /* DrawFileManager.swift */,
-				7FE267342907775A0018285D /* DrawFileManager+Trans.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -241,6 +242,36 @@
 				7FE267272902A6BB0018285D /* FastCoder.h */,
 			);
 			path = FastCoder;
+			sourceTree = "<group>";
+		};
+		7FEBDD802938AA980023548D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7F0B744028C9E59B00BD4528 /* Pen.swift */,
+				7F0B744228C9F04300BD4528 /* Drawing.swift */,
+				7F822C3228F95BC200C98FB0 /* DrawedCell.swift */,
+				7F822C7629022E4900C98FB0 /* HorizontalPickerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7FEBDD822938C9A90023548D /* Handwriting */ = {
+			isa = PBXGroup;
+			children = (
+				7FEBDD8B2939D7F30023548D /* WritingView */,
+				7FEBDD832938C9E90023548D /* HandwritingVC.swift */,
+			);
+			path = Handwriting;
+			sourceTree = "<group>";
+		};
+		7FEBDD8B2939D7F30023548D /* WritingView */ = {
+			isa = PBXGroup;
+			children = (
+				7FEBDD892939D2A60023548D /* HanziWriterView.swift */,
+				7FEBDD8C2939D8310023548D /* WritingView.swift */,
+				7FEBDD90293DD1A50023548D /* WriterHandleView.swift */,
+			);
+			path = WritingView;
 			sourceTree = "<group>";
 		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
@@ -276,12 +307,12 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				7FEBDD822938C9A90023548D /* Handwriting */,
 				7FE267252902A6BB0018285D /* FastCoder */,
 				7F7275F428F7ADA500E61E92 /* FlutterHandler */,
 				7F66484928DDAE5D0044400A /* Model */,
 				7FA2920E28D94B8C0086AD5D /* Tools */,
 				7F0B744428CB112200BD4528 /* Extension */,
-				7F0B743F28C9E57600BD4528 /* View */,
 				7F0B743C28C9CF8800BD4528 /* Game */,
 				7F0B743728C9C05F00BD4528 /* chchar */,
 				7F0B742B28C9BFC800BD4528 /* RNCachingURLProtocol */,
@@ -340,7 +371,7 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
@@ -389,6 +420,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -425,6 +457,7 @@
 		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -461,11 +494,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FEBDD8D2939D8310023548D /* WritingView.swift in Sources */,
 				7F822C7729022E4900C98FB0 /* HorizontalPickerView.swift in Sources */,
 				7F822C3728F95E4E00C98FB0 /* UIView+Extension.swift in Sources */,
 				7F822C3929000ABB00C98FB0 /* MyChars.swift in Sources */,
+				7FEBDD91293DD1A50023548D /* WriterHandleView.swift in Sources */,
 				7FE2672E2906826D0018285D /* DrawFileManager.swift in Sources */,
 				7F66484B28DDAE6E0044400A /* Lesson.swift in Sources */,
+				7FEBDD842938C9E90023548D /* HandwritingVC.swift in Sources */,
 				7F7275F828F7B37300E61E92 /* FlutterPlugin+Method.swift in Sources */,
 				7F7275F628F7B35000E61E92 /* FlutterPlugin+Route.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
@@ -475,9 +511,11 @@
 				7F0B743E28C9CFB200BD4528 /* GameViewController+Web.swift in Sources */,
 				7FA2921828D9B9D40086AD5D /* jsonserialize.swift in Sources */,
 				7F0B743428C9BFD800BD4528 /* RNCachingURLProtocol.m in Sources */,
+				7F141AEB29438E150015BF39 /* DrawingCache.swift in Sources */,
 				7FE267282902A6BB0018285D /* FastCoder.m in Sources */,
 				7F822C3328F95BC200C98FB0 /* DrawedCell.swift in Sources */,
 				7FA2921028D94BF50086AD5D /* JSTools.swift in Sources */,
+				7F141AE929438CF90015BF39 /* CacheProtocol.swift in Sources */,
 				7F40EB9828D2BFDB002D5DC0 /* BaseViewController.swift in Sources */,
 				7F0B744828CB113800BD4528 /* UIColor+Extentsion.swift in Sources */,
 				7F0B743328C9BFD800BD4528 /* Reachability.m in Sources */,
@@ -487,8 +525,8 @@
 				7F0B743628C9BFD800BD4528 /* NSString+Sha1.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				7F0B744128C9E59B00BD4528 /* Pen.swift in Sources */,
+				7FEBDD8A2939D2A60023548D /* HanziWriterView.swift in Sources */,
 				7FE267352907775A0018285D /* DrawFileManager+Trans.swift in Sources */,
-				7FE267302906AF0B0018285D /* WritedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +575,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -555,7 +594,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -574,6 +613,7 @@
 				DEVELOPMENT_TEAM = N8HH6TB5KH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -609,6 +649,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -633,7 +674,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -664,6 +705,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -682,7 +724,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -703,6 +745,7 @@
 				DEVELOPMENT_TEAM = N8HH6TB5KH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -726,6 +769,7 @@
 				DEVELOPMENT_TEAM = N8HH6TB5KH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

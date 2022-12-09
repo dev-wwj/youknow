@@ -31,7 +31,6 @@ class _CharacterViewState extends State<CharacterView>
     isAutoplay().then((value) {
       if (value) {
         speak();
-        _controller.forward();
       }
     });
   }
@@ -40,21 +39,6 @@ class _CharacterViewState extends State<CharacterView>
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-  void queryTrans() async {
-    try {
-      Future<dynamic> value = channel.invokeMethod(
-          keyMethodNative, ['applyingTransform', widget.character]);
-      value.then((value) {
-        _pinying = value;
-        setState(() {});
-      });
-    } on PlatformException {}
-  }
-
-  void speak() {
-    spelling(widget.character);
   }
 
   @override
@@ -86,28 +70,46 @@ class _CharacterViewState extends State<CharacterView>
               if (_controller.isAnimating) {
                 return;
               }
-              _controller.forward();
               speak();
             },
             child: Lottie.asset('resources/animations/sound.json',
                 width: 80, controller: _controller, onLoaded: (composition) {
-                  _controller
-                    ..duration = const Duration(milliseconds: 400)
-                    // ..forward()
-                    ..addStatusListener((status) {
-                      switch (status) {
-                        case AnimationStatus.completed:
-                          _controller.reverse();
-                          break;
-                        case AnimationStatus.dismissed:
-                          break;
-                      }
-                    });
-                }),
+              _controller
+                ..duration = const Duration(milliseconds: 400)
+                // ..forward()
+                ..addStatusListener((status) {
+                  switch (status) {
+                    case AnimationStatus.completed:
+                      _controller.reverse();
+                      break;
+                    case AnimationStatus.dismissed:
+                      break;
+                  }
+                });
+            }),
           ),
           const Spacer(),
         ],
       ),
     );
   }
+
+  void queryTrans() async {
+    try {
+      Future<dynamic> value = channel.invokeMethod(
+          keyMethodNative, ['applyingTransform', widget.character]);
+      value.then((value) {
+        _pinying = value;
+        setState(() {});
+      });
+    } on PlatformException {}
+  }
+
+  void speak() {
+    spelling(widget.character);
+    speakAnimate();
+  }
+
+  Future<void> speakAnimate() async => await Future.delayed(
+      const Duration(milliseconds: 200), () => _controller.forward());
 }

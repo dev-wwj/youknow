@@ -26,4 +26,18 @@ extension UIView {
         }
         return image.jpegData(compressionQuality: 0.5)
     }
+    
+    func viewController() -> UIViewController? {
+        var next = superview
+        while next != nil {
+            let nextResponder = next?.next
+            if nextResponder is UINavigationController ||
+                nextResponder is UIViewController
+            {
+                return nextResponder as? UIViewController
+            }
+            next = next?.superview
+        }
+        return nil
+    }
 }

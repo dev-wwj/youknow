@@ -97,14 +97,17 @@ class CharPickView: UICollectionView {
         self.showsHorizontalScrollIndicator = false
         self.delegate = self
         self.dataSource = self
-    }
-    
-    override func layoutMarginsDidChange() {
-        super.layoutMarginsDidChange()
-        if self.bounds.width > 0 {
-            self.contentInset = UIEdgeInsets(top: 0, left: self.bounds.width/2, bottom: 0, right: self.bounds.width/2)
+        DispatchQueue.main.async {[unowned self] in
             let defaultIndex = IndexPath(item: myChars.index, section: 0)
             self.selectItem(at: defaultIndex, animated: false, scrollPosition: .centeredHorizontally)
+            self.ScrollTo?(myChars.index)
+        }
+    }
+ 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if self.bounds.width > 0 {
+            self.contentInset = UIEdgeInsets(top: 0, left: self.bounds.width/2, bottom: 0, right: self.bounds.width/2)
         }
     }
     
@@ -116,14 +119,14 @@ class CharPickView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
 }
- 
+
 extension CharPickView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let c = collectionView.dequeueReusableCell(withReuseIdentifier: "_cell", for: indexPath) as! CharCell
         c.label.text = myChars.chars[indexPath.item]
         return c
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myChars.chars.count
     }
@@ -131,7 +134,7 @@ extension CharPickView: UICollectionViewDataSource, UICollectionViewDelegateFlow
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 50, height: 50)
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }

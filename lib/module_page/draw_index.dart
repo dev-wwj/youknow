@@ -28,8 +28,18 @@ class DrawIndexState extends State<DrawIndex> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('我的字'),
+          title: const Text('笔录'),
           elevation: 0,
+          leading: IconButton(
+              onPressed: (){
+                if (router.canPop()) {
+                  Navigator.pop(context);
+                }else {
+                  channel.invokeMethod(keyRouteNative, ['pop']);
+                }
+              },
+              icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white,)
+          ),
         ),
         body: SafeArea(
           child: FutureBuilder<int>(builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
