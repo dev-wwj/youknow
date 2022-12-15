@@ -21,6 +21,7 @@ class LessonCell extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: 5,),
             Text(
               '第${index + 1}课',
               style: const TextStyle(fontSize: 20),

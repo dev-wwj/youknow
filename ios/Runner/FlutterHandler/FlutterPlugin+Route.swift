@@ -16,7 +16,7 @@ extension FlutterPlugin {
         if path == "pop" {
             navi?.popViewController(animated: true)
         }
-        if path == "GameViewController" {
+        if path == "HandwritingVC" {
             let vc = HandwritingVC()
             if let param = argv?[1] as? String,
                let myChars = param.toModel(MyChars.self) {

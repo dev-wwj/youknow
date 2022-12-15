@@ -4,6 +4,7 @@ import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:youknow/extension/string_ex.dart';
+import 'package:youknow/global.dart';
 
 class MyChars {
   final List<String> chars;
@@ -61,11 +62,11 @@ class MyChars {
 
   // 读取本地文件
   static Future<MyChars> locChars() async {
+
     Future<String> _locFile() async {
       var str = await MString.readStringFile('resources/character.string');
       return str;
     }
-
     return _locFile().then((value) {
       List<String> cs = [];
       for (var element in value.characters) {
@@ -75,3 +76,4 @@ class MyChars {
     }).catchError((Error error) => Null);
   }
 }
+

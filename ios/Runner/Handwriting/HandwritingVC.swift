@@ -13,7 +13,7 @@ import WebKit
 class HandwritingVC: BaseViewController {
     
     var myChars: MyChars!
-    let cache = DrawedCache()
+    let cache = DrawedCache.cache
     override func viewDidLoad() {
         super.viewDidLoad()
         rigthImage = "folder"
@@ -22,9 +22,7 @@ class HandwritingVC: BaseViewController {
         _ = canvasView
         _ = handleView
         _ = toolPicker
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.canvasView.drawing =  self.cache.model.draweds.last?.drawing ?? PKDrawing()
-        }
+        self.canvasView.drawing =  self.cache.model.draweds.last?.drawing ?? PKDrawing()
     }
     
     lazy var charPicker: CharPickView = {
@@ -47,12 +45,11 @@ class HandwritingVC: BaseViewController {
         safeView.addSubview(view)
         return view
     }()
-      
-    lazy var canvasView: PKCanvasView = {
-        let canvas = PKCanvasView()
+    
+    lazy var canvasView: MyCanvasView = {
+        let canvas = MyCanvasView()
         canvas.delegate = self
         canvas.isOpaque = false
-        canvas.backgroundColor = .lightGray
         if #available(iOS 14.0, *) {
             canvas.drawingPolicy = .anyInput
         } else {
@@ -123,7 +120,14 @@ class HandwritingVC: BaseViewController {
             }
         }
     }
-    
+}
+
+extension HandwritingVC {
+    override func rightAction() {
+        let vc = FlutterViewController(project: nil, initialRoute: "/draw", nibName: nil, bundle: nil)
+        FlutterPlugin.instance.register(vc)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 
@@ -134,7 +138,6 @@ extension HandwritingVC: PKCanvasViewDelegate {
     
     func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
         canvasView.becomeFirstResponder()
-
     }
     
     func canvasViewDidFinishRendering(_ canvasView: PKCanvasView) {
@@ -158,8 +161,11 @@ extension HandwritingVC: WriterHandleDelegate {
             break
         case .favorite:
             let drawing = canvasView.drawing
-            cache.addDrawing(drawing)
+            cache.addDrawing(drawing, size: canvasView.bounds.size)
             let img = canvasView.drawing.image(from: canvasView.bounds, scale: 1.0)
+            let data = CellData(image: img, show: false)
+            writingView.addImage(data, animateBase: canvasView)
+            canvasView.drawing = PKDrawing()
         }
     }
     

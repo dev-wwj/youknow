@@ -11,7 +11,17 @@ let boxSize = 120
 
 class WritingView: UIView {
     
-    var images: [CellDate] = []
+    var images: [CellData] = []
+    
+    func addImage(_ data: CellData, animateBase: UIView? = nil) {
+        images.append(data)
+        let indexPath = IndexPath(item: images.count - 1, section: 0)
+        collectionView.performBatchUpdates {[unowned collectionView] in
+            collectionView.insertItems(at: [indexPath])
+        } completion: {[unowned self, unowned collectionView] finish in
+            collectionView.scrollToItem(at: indexPath, at: (self.direction == .vertical ? .right : .bottom), animated: true)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -107,15 +117,12 @@ class WritingView: UIView {
 extension WritingView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //        return images.count
-        return 10
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "_cell", for: indexPath) as! DrawedCell
-//        cell.backgroundColor = .random()
-        //        cell.imageView.image = images[indexPath.item].image
-        //        cell.imageView.isHidden = !images[indexPath.item].show
+        cell.imageView.image = images[indexPath.item].image
         return cell
     }
     

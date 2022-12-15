@@ -24,6 +24,7 @@
 		7F0B744828CB113800BD4528 /* UIColor+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0B744728CB113800BD4528 /* UIColor+Extentsion.swift */; };
 		7F141AE929438CF90015BF39 /* CacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F141AE829438CF90015BF39 /* CacheProtocol.swift */; };
 		7F141AEB29438E150015BF39 /* DrawingCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F141AEA29438E150015BF39 /* DrawingCache.swift */; };
+		7F141AED2946D46E0015BF39 /* MyCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F141AEC2946D46E0015BF39 /* MyCanvasView.swift */; };
 		7F40EB9828D2BFDB002D5DC0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F40EB9728D2BFDB002D5DC0 /* BaseViewController.swift */; };
 		7F66484B28DDAE6E0044400A /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F66484A28DDAE6E0044400A /* Lesson.swift */; };
 		7F7275F328F7ACE700E61E92 /* FlutterPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7275F228F7ACE600E61E92 /* FlutterPlugin.swift */; };
@@ -92,6 +93,7 @@
 		7F0B744728CB113800BD4528 /* UIColor+Extentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extentsion.swift"; sourceTree = "<group>"; };
 		7F141AE829438CF90015BF39 /* CacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheProtocol.swift; sourceTree = "<group>"; };
 		7F141AEA29438E150015BF39 /* DrawingCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingCache.swift; sourceTree = "<group>"; };
+		7F141AEC2946D46E0015BF39 /* MyCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCanvasView.swift; sourceTree = "<group>"; };
 		7F40EB9728D2BFDB002D5DC0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7F66484A28DDAE6E0044400A /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		7F7275F228F7ACE600E61E92 /* FlutterPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterPlugin.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				7FEBDD892939D2A60023548D /* HanziWriterView.swift */,
 				7FEBDD8C2939D8310023548D /* WritingView.swift */,
 				7FEBDD90293DD1A50023548D /* WriterHandleView.swift */,
+				7F141AEC2946D46E0015BF39 /* MyCanvasView.swift */,
 			);
 			path = WritingView;
 			sourceTree = "<group>";
@@ -371,7 +374,7 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
@@ -514,6 +517,7 @@
 				7F141AEB29438E150015BF39 /* DrawingCache.swift in Sources */,
 				7FE267282902A6BB0018285D /* FastCoder.m in Sources */,
 				7F822C3328F95BC200C98FB0 /* DrawedCell.swift in Sources */,
+				7F141AED2946D46E0015BF39 /* MyCanvasView.swift in Sources */,
 				7FA2921028D94BF50086AD5D /* JSTools.swift in Sources */,
 				7F141AE929438CF90015BF39 /* CacheProtocol.swift in Sources */,
 				7F40EB9828D2BFDB002D5DC0 /* BaseViewController.swift in Sources */,
@@ -610,7 +614,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = N8HH6TB5KH;
+				DEVELOPMENT_TEAM = F33KAFG7AG;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -618,7 +622,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.youknow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fydd.youknow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -742,7 +746,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = N8HH6TB5KH;
+				DEVELOPMENT_TEAM = F33KAFG7AG;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -750,7 +754,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.youknow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fydd.youknow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -765,8 +769,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = N8HH6TB5KH;
+				DEVELOPMENT_TEAM = F33KAFG7AG;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -774,8 +780,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.youknow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fydd.youknow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

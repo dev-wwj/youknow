@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-struct CellDate {
+struct CellData {
     let image: UIImage
     var show: Bool
     
@@ -22,6 +22,8 @@ class DrawedCell: UICollectionViewCell {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.borderColor = 0xD0D0D0.color?.cgColor
+        imageView.layer.borderWidth = 1.0
         addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

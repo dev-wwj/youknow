@@ -28,7 +28,7 @@ class DrawIndexState extends State<DrawIndex> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('笔录'),
+          title: const Text('记录'),
           elevation: 0,
           leading: IconButton(
               onPressed: (){
@@ -38,7 +38,7 @@ class DrawIndexState extends State<DrawIndex> {
                   channel.invokeMethod(keyRouteNative, ['pop']);
                 }
               },
-              icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white,)
+              icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black54,)
           ),
         ),
         body: SafeArea(

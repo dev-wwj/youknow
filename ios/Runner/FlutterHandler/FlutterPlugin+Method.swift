@@ -30,6 +30,8 @@ extension FlutterPlugin {
                 return
             }
             result(imageDataAt(index))
+        case "write_review":
+            UIApplication.shared.open(URL(string: "itms-apps://itunes.apple.com/app/id1659871220?action=write-review")!)
         default:
             break
         }
@@ -39,7 +41,7 @@ extension FlutterPlugin {
 extension FlutterPlugin {
     // 字符串转拉丁字母 (汉字转拼音)
     private func applyingTransform(param: String) -> String {
-        return param.applyingTransform(.toLatin, reverse: false) ?? ""
+        return param.applyingTransform(.mandarinToLatin, reverse: false) ?? ""
     }
     
     
@@ -53,7 +55,6 @@ extension FlutterPlugin {
          */
 //        let attText = NSMutableAttributedString(string: "长", attributes: [.accessibilitySpeechIPANotation:"ㄓㄤˇ"])
 //        let utterance = AVSpeechUtterance(attributedString:attText)
-        
         let utterance = AVSpeechUtterance(string: text)
         utterance.rate = 0.3
         utterance.voice = self.femaleVoice
@@ -73,11 +74,12 @@ extension FlutterPlugin {
 
 extension FlutterPlugin {
     func drawCount() -> Int{
-        return DrawFileManager.manager.queryCount()
+        return DrawedCache.cache.model.count
     }
     
     func imageDataAt(_ index: Int) -> [UInt8]? {
-        guard let data =  DrawFileManager.manager.imageDataAt(index) else  {
+        guard let image = DrawedCache.cache.model.imageAt(index: index),
+              let data = image.jpegData(compressionQuality: 0.25) else {
             return nil
         }
         return [UInt8](data);

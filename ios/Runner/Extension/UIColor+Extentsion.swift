@@ -165,8 +165,7 @@ extension String {
         
         let scanner = Scanner(string: hexString)
         var color: UInt32 = 0
-        scanner.scanHexInt32(&color)
-        
+        scanner.scanHexInt32(&color) 
         let mask = 0x000000FF
         let r = Int(color >> 16) & mask
         let g = Int(color >> 8) & mask
@@ -184,4 +183,8 @@ extension String {
     }
 }
 
-
+extension Int {
+    var color: UIColor? {
+        return UIColor._Color(hex: self)
+    }
+}

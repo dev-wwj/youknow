@@ -42,21 +42,6 @@ class _HanziPageState extends State<HanziPage> {
                 ]
               : [],
         ),
-        floatingActionButtonLocation:
-            FloatingActionButtonLocation.miniEndDocked,
-        floatingActionButton: IconButton(
-          onPressed: () {
-            myChars.index = _pageController.page?.toInt() ?? 0;
-            channel.invokeMethod(keyRouteNative, [
-              'GameViewController',
-              jsonEncode(myChars),
-            ]);
-          },
-          icon: Image.asset(
-            'resources/images/write.png',
-          ),
-          iconSize: 60,
-        ),
         body: Container(
           decoration: BoxDecoration(color: MyColor.randomLightish()),
           child: SafeArea(

@@ -10,6 +10,7 @@ import PencilKit
 
 struct DrawedModel: Codable {
     let drawing: PKDrawing
+    let size: CGSize
     let time: Date
 }
 
@@ -19,15 +20,34 @@ struct CacheModel: Codable {
     
     var draweds: [DrawedModel] = []
     
+    var count: Int {
+        return draweds.count
+    }
+    
+    func drawedAt(index :Int) -> DrawedModel {
+        return draweds[index]
+    }
+    
+    func imageAt(index: Int) -> UIImage? {
+        let drawed = drawedAt(index: index)
+        let drawing = drawed.drawing
+        return drawing.image(from: CGRectMake(0, 0, drawed.size.width, drawed.size.height), scale: 1.0)
+    }
 }
 
 class DrawedCache {
-    
+    static let cache = DrawedCache()
+
     var model = CacheModel()
     
     init() {
         loadModel()
     }
+    
+    private let serializationQueue = DispatchQueue(label: "SerializationQueue", qos: .background)
+}
+
+extension DrawedCache {
     
     func loadModel() {
         let path = savePath
@@ -49,20 +69,9 @@ class DrawedCache {
                 } catch {
                 }
             }
-//            if FileManager.default.fileExists(atPath: url.path) {
-//                do {
-//                    let data = try Data(contentsOf: url)
-//
-//                }
-//            }
         }
     }
-    
-    private let serializationQueue = DispatchQueue(label: "SerializationQueue", qos: .background)
 
-}
-
-extension DrawedCache {
     private var savePath: String {
         let root = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let path = root.appending("/youknow.data")
@@ -73,7 +82,6 @@ extension DrawedCache {
             do {
                 try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true)
             } catch {
-                
             }
         }
         return path
@@ -81,10 +89,9 @@ extension DrawedCache {
 }
 
 extension DrawedCache {
-    
-    func addDrawing(_ drawing: PKDrawing) {
-        let drawed = DrawedModel(drawing: drawing, time: Date())
-        self.model.draweds.append(drawed)
+    func addDrawing(_ drawing: PKDrawing, size: CGSize) {
+        let drawed = DrawedModel(drawing: drawing, size: size, time: Date())
+        model.draweds.append(drawed)
         saveDrawed(drawed)
     }
     
@@ -95,7 +102,7 @@ extension DrawedCache {
                 let encoder = PropertyListEncoder()
                 let data = try encoder.encode(drawed)
                 let name = "/drawed_\(drawed.time.timeIntervalSince1970)"
-                if var dPath = path.appending(name) as? String {
+                if let dPath = path.appending(name) as? String {
                     try data.write(to: URL(fileURLWithPath: dPath))
                 }
             } catch {

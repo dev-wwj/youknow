@@ -10,13 +10,13 @@ extension MyColor on Color {
   }
 
   static Color randomLight() {
-    return Color.fromARGB(255, Random.secure().nextInt(127) + 128,
-        Random.secure().nextInt(127) + 128, Random.secure().nextInt(127) + 128);
+    return Color.fromARGB(255, Random.secure().nextInt(200) + 55,
+        Random.secure().nextInt(200) + 55, Random.secure().nextInt(200) + 55);
   }
 
   static Color randomLightish() {
-    return Color.fromARGB(255, Random.secure().nextInt(30) + 225,
-        Random.secure().nextInt(30) + 225, Random.secure().nextInt(30) + 225);
+    return Color.fromARGB(255, Random.secure().nextInt(20) + 235,
+        Random.secure().nextInt(20) + 235, Random.secure().nextInt(20) + 235);
   }
 
   static MaterialColor createMaterialColor(Color color) {

@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youknow/extension/color_ex.dart';
+import 'package:youknow/global.dart';
 import 'package:youknow/router.dart';
 import 'package:youknow/view/checked_view.dart';
 import 'package:youknow/view/indicator.dart';
@@ -79,7 +80,9 @@ class SettingsIndexState extends State<SettingsIndex> {
                         Indicator(title: "分享", onPressed: (){
                             Share.share('check out my website https://example.com', subject: '幼儿学习助手');
                         },),
-                        Indicator(title: '给个好评', showSeparator: false,),
+                        Indicator(title: '给个好评', showSeparator: false, onPressed: (){
+                          channel.invokeMethod(keyMethodNative, ['write_review']);
+                        },),
                       ],
                     ),
                   ),

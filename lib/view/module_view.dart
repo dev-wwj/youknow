@@ -27,109 +27,122 @@ class _ModuleViewState extends State<ModuleView> with TickerProviderStateMixin {
   void initState() {
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: MyColor.randomLightish(),
       width: double.infinity,
       height: double.infinity,
-      child: Center(child: Stack(
-        children: [
-          RotationTransition(
-            turns: _animation,
-            child: SizedBox(
-              width: 300,
-              height: 300,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(40, 0, 180, 140),
-                    child: SizedBox(
-                      width: 80,
-                      height: 160,
-                      child: TextButton(
-                        style: _buttonStyle,
-                        onPressed: () {
-                          GoRouter.of(context).push('/pinyin');
-                        },
-                        child: Transform.rotate(angle: math.pi/2, child: const Text('拼音')),
+      child: Center(
+        child: Stack(
+          children: [
+            RotationTransition(
+              turns: _animation,
+              child: SizedBox(
+                width: 300,
+                height: 300,
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(40, 0, 180, 140),
+                      child: SizedBox(
+                        width: 80,
+                        height: 160,
+                        child: TextButton(
+                          style: _buttonStyle,
+                          onPressed: () {
+                            GoRouter.of(context).push('/pinyin');
+                          },
+                          child: Transform.rotate(
+                              angle: math.pi / 2, child: const Text('音')),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(180, 140, 40, 0),
-                    child: SizedBox(
-                      width: 80,
-                      height: 160,
-                      child: TextButton(
-                        style: _buttonStyle,
-                        onPressed: () {
-                          GoRouter.of(context).push('/hanzi');
-                        },
-                        child:Transform.rotate(angle: math.pi/2, child: const Text('识字')),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(180, 140, 40, 0),
+                      child: SizedBox(
+                        width: 80,
+                        height: 160,
+                        child: TextButton(
+                          style: _buttonStyle,
+                          onPressed: () {
+                            GoRouter.of(context).push('/hanzi');
+                          },
+                          child: Transform.rotate(
+                              angle: math.pi / 2, child: const Text('字')),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(140, 40, 0, 180),
-                    child: SizedBox(
-                      width: 160,
-                      height: 80,
-                      child: TextButton(
-                        style: _buttonStyle,
-                        onPressed: () {
-                          MyChars.locChars().then((value) {
-                            myChars = value;
-                            channel.invokeMethod(keyRouteNative, [
-                              'GameViewController',
-                              jsonEncode(myChars),
-                            ]);
-                          });
-                        },
-                        child: const Text("涂鸦"),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(140, 40, 0, 180),
+                      child: SizedBox(
+                        width: 160,
+                        height: 80,
+                        child: TextButton(
+                          style: _buttonStyle,
+                          onPressed: () {
+                            MyChars.locChars().then((value) {
+                              myChars = value;
+                              channel.invokeMethod(keyRouteNative, [
+                                'HandwritingVC',
+                                jsonEncode(myChars),
+                              ]);
+                            });
+                          },
+                          child: const Text("写"),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 180, 140, 40),
-                    child: SizedBox(
-                      width: 160,
-                      height: 80,
-                      child: TextButton(
-                        style: _buttonStyle,
-                        onPressed: () {
-                          router.push('/draw');
-                        },
-                        child: const Text("笔录"),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 180, 140, 40),
+                      child: SizedBox(
+                        width: 160,
+                        height: 80,
+                        child: TextButton(
+                          style: _buttonStyle,
+                          onPressed: () async {
+                            MyChars.locChars().then((value) {
+                              myChars = value;
+                              router.push('/work');
+                            });
+                          },
+                          child: const Text("练"),
+                        ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            width: 300,
-            height: 300,
-            child: Center(
-              child:  IconButton(onPressed: (){
-                router.push('/settings');
-              }, icon: Image.asset('resources/images/settings.png', color: MyColor.random(),), ),
-            ),
-          )
-        ],
-      ),),
+            SizedBox(
+              width: 300,
+              height: 300,
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    router.push('/settings');
+                  },
+                  icon: Image.asset(
+                    'resources/images/settings.png',
+                    color: MyColor.random(),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
-  late final ButtonStyle _buttonStyle =  ButtonStyle(
-      textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 30, color: Colors.white)),
-      foregroundColor: MaterialStateProperty.resolveWith((states){
+  late final ButtonStyle _buttonStyle = ButtonStyle(
+      textStyle: MaterialStateProperty.all(
+          const TextStyle(fontSize: 30, color: Colors.white)),
+      foregroundColor: MaterialStateProperty.resolveWith((states) {
         return MyColor.randomLight();
       }),
       backgroundColor: MaterialStateProperty.resolveWith((states) {
         return MyColor.randomLight();
-      })
-  );
+      }));
 }

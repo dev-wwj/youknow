@@ -14,7 +14,7 @@ import WebKit
 class GameViewController: BaseViewController {
     var myChars: MyChars?
 
-    var images: [CellDate] = []
+    var images: [CellData] = []
 
     var cacheProtocal: CacheProtocal?
 
@@ -139,7 +139,7 @@ class GameViewController: BaseViewController {
             self.cacheProtocal?.addDPath(drawing.paths)
 
             if let img = drawing.snapshot() {
-                images.append(CellDate(image: img, show: false))
+                images.append(CellData(image: img, show: false))
                 let indexPath = IndexPath(row: images.count - 1, section: 0)
                 collectionView.insertItems(at: [indexPath])
                 collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
