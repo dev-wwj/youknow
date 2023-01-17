@@ -5,34 +5,36 @@ import 'package:reorderables/reorderables.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/model/character_latin.dart';
 
-class WorkView extends StatefulWidget {
+class WorkMoveView extends StatefulWidget {
   // final List<String> chars;
   final CharRandom charRandom;
 
-  const WorkView({super.key, required this.charRandom});
+  const WorkMoveView({super.key, required this.charRandom});
 
   @override
-  State<StatefulWidget> createState() => WorkViewState();
+  State<StatefulWidget> createState() => WorkMoveViewState();
 }
 
-class WorkViewState extends State<WorkView> {
+class WorkMoveViewState extends State<WorkMoveView> {
   late List<Widget> _itemRows;
   late List<Widget> _moveRows;
 
   @override
   void initState() {
-    List<String> chars =  widget.charRandom.randomChars;
+    List<String> chars = widget.charRandom.randomChars;
     _itemRows = List<Widget>.generate(
         chars.length, (index) => _Card(title: chars[index]));
-    List<CharLatin> latinChars =  widget.charRandom.orderChars;
+    List<CharLatin> latinChars = widget.charRandom.orderChars;
     _moveRows = List<Widget>.generate(
-        latinChars.length, (index) => _Card(key: UniqueKey(), title: latinChars[index].latin ?? ""));
+        latinChars.length,
+        (index) =>
+            _Card(key: UniqueKey(), title: latinChars[index].latin ?? ""));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    void _onReorder(int oldIndex, int newIndex) {
+    Future<void> _onReorder(int oldIndex, int newIndex) async {
       widget.charRandom.swithOrderItem(oldIndex, newIndex);
       setState(() {
         Widget row = _moveRows.removeAt(oldIndex);
@@ -41,7 +43,7 @@ class WorkViewState extends State<WorkView> {
     }
 
     return Center(
-        child: Container(
+        child: SizedBox(
       height: 300,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -51,9 +53,9 @@ class WorkViewState extends State<WorkView> {
             children: _itemRows,
           ),
           ReorderableColumn(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      onReorder: _onReorder,
-                      children: _moveRows)
+              mainAxisAlignment: MainAxisAlignment.center,
+              onReorder: _onReorder,
+              children: _moveRows)
         ],
       ),
     ));

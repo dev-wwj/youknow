@@ -9,7 +9,9 @@ import 'package:youknow/module_page/hanzi_page.dart';
 import 'package:youknow/module_page/pinyin_index.dart';
 import 'package:youknow/module_page/pinyin_page.dart';
 import 'package:youknow/module_page/settings_index.dart';
-import 'package:youknow/module_page/work_index.dart';
+import 'package:youknow/module_page/work/work_base.dart';
+import 'package:youknow/module_page/work/work_link.dart';
+import 'package:youknow/module_page/work/work_move.dart';
 
 final GoRouter router = GoRouter(routes: <GoRoute>[
   GoRoute(path: '/', builder: (context, state) => const HomePage()),
@@ -40,7 +42,12 @@ final GoRouter router = GoRouter(routes: <GoRoute>[
   GoRoute(
       path: '/work',
       builder: (context, state) {
-        return WorkIndex();
+        return WorkMove();
+      }),
+  GoRoute(
+      path: '/work/link',
+      builder: (context, state) {
+        return WorkLink();
       }),
   GoRoute(
       path: '/pinyin/page',

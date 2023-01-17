@@ -18,7 +18,7 @@ class ModuleView extends StatefulWidget {
 
 class _ModuleViewState extends State<ModuleView> with TickerProviderStateMixin {
   late final AnimationController _animationController =
-      AnimationController(vsync: this, duration: const Duration(seconds: 30))
+      AnimationController(vsync: this, duration: const Duration(seconds: 60))
         ..repeat();
   late final Animation<double> _animation =
       Tween<double>(begin: 0, end: 1).animate(_animationController);

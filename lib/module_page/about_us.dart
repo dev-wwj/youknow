@@ -93,13 +93,13 @@ class _AboutUsState extends State<AboutUs> {
   Future<String> _version() async{
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String varsion = packageInfo.version;
-    return '彩虹拼音 v$varsion';
+    return '朵朵学字 v$varsion';
   }
 
   void _sendEmail() {
     final Email email = Email(
       body: '...',
-      subject: '彩虹拼音',
+      subject: '朵朵学字',
       recipients: ['fyddwwj@hotmail.com'],
       isHTML: false,
     );
