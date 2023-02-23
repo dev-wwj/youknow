@@ -7,6 +7,10 @@ extension MyTextStyle on TextStyle {
     return TextStyle(fontSize: fontSize, color: Colors.white);
   }
 
+  static TextStyle black(double fontSize) {
+    return TextStyle(fontSize: fontSize, color: Colors.black);
+  }
+
   static TextStyle whiteLarger() {
     return white(30);
   }

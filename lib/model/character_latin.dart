@@ -10,6 +10,13 @@ class CharLatin {
   CharLatin({ required this.ch, this.latin});
 }
 
+class WorkLink {
+  final int index;
+  final int matching;
+  final Color color;
+  WorkLink({required this.index, required this.color, required this.matching});
+}
+
 typedef OrderCallBack = void Function(bool);
 
 class CharRandom {
@@ -18,6 +25,7 @@ class CharRandom {
 
   OrderCallBack? orderBack;
 
+  /*从每课中选择几个字练习*/
   CharRandom(this._chars, this._groupSize, this.orderBack);
 
   late List<String> randomChars;
@@ -41,6 +49,7 @@ class CharRandom {
     return true;
   }
 
+  /*转换成拉丁字母*/
   Future<void> _queryTrans() async {
     try {
       for (var element in orderChars) {
@@ -87,10 +96,28 @@ class CharRandom {
     }
     return true;
   }
+  // 判断连线是否正确
 
+  void judgeLink(List<WorkLink> links) {
+    if (isLinkCorrect(links)){
+      orderBack!(true);
+    }
+  }
 
-
-
+  bool isLinkCorrect(List<WorkLink> links) {
+    if (links.isEmpty || links.length < randomChars.length) {
+      return false;
+    }
+    for (var element in links) {
+      var char = randomChars[element.index];
+      var latinChar = orderChars[element.matching].ch;
+      if (char != latinChar) {
+        return false;
+      }
+    }
+    return true;
+  }
 
 
 }
+

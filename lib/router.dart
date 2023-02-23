@@ -42,12 +42,12 @@ final GoRouter router = GoRouter(routes: <GoRoute>[
   GoRoute(
       path: '/work',
       builder: (context, state) {
-        return WorkMove();
+        return const WorkMove();
       }),
   GoRoute(
       path: '/work/link',
       builder: (context, state) {
-        return WorkLink();
+        return const WorkLink();
       }),
   GoRoute(
       path: '/pinyin/page',

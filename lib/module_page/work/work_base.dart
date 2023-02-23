@@ -6,7 +6,6 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 
 abstract class WorkBase extends StatefulWidget {
   const WorkBase({super.key});
-
 }
 
 abstract class WorkBaseState extends State<WorkBase> {
@@ -70,7 +69,7 @@ abstract class WorkBaseState extends State<WorkBase> {
               },
               child: const Text(
                 '下一课',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
           ],

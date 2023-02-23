@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
           }, icon: const Icon(Icons.settings)),
         ],
       ),
-      body: ModuleViewV2(),
+      body: const ModuleViewV2(),
     );
   }
 }

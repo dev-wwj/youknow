@@ -25,14 +25,14 @@ class WorkLinkState extends WorkBaseState {
                     builder: (BuildContext context,
                         AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.connectionState == ConnectionState.done) {
-                        return const SizedBox();
-                      } else {
                         return WorkLinkView(
                             key: UniqueKey(), charRandom: charRandom);
+                      } else {
+                        return const SizedBox();
                       }
                     })),
             const Center(
-              child: Text('移动右侧拼音，与左侧汉字同行'),
+              child: Text('将对应的汉字和拼音连起来'),
             )
           ],
         )));

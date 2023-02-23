@@ -21,74 +21,77 @@ class ModuleViewV2 extends StatefulWidget {
 class ModuleViewV2State extends State<ModuleViewV2> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: StaggeredGrid.count(
-        crossAxisCount: 4,
-        mainAxisSpacing: 4,
-        crossAxisSpacing: 4,
-        children: [
-          StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
-              child: TextButton(
-                style: MyButtonStyle.randomBgFontLarger(),
-                onPressed: () {
-                  GoRouter.of(context).push('/pinyin');
-                },
-                child: const Text('拼音'),
-              )),
-          StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
-              child: TextButton(
-                style: MyButtonStyle.randomBgFontLarger(),
-                onPressed: () {
-                  GoRouter.of(context).push('/hanzi');
-                },
-                child: const Text('识字'),
-              )),
-          StaggeredGridTile.count(
-              crossAxisCellCount: 4,
-              mainAxisCellCount: 2,
-              child: TextButton(
-                style: MyButtonStyle.randomBgFontMaximum(),
-                onPressed: () {
-                  MyChars.locChars().then((value) {
-                    channel.invokeMethod(keyRouteNative, [
-                      'HandwritingVC',
-                      jsonEncode(value),
-                    ]);
-                  });
-                },
-                child: const Text('书写'),
-              )),
-          StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
-              child: TextButton(
-                style: MyButtonStyle.randomBgFontLarger(),
-                onPressed: () {
-                  MyChars.locChars().then((value) {
-                    myChars = value;
-                    router.push('/work');
-                  });
-                },
-                child: const Text('拖一下'),
-              )),
-          StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
-              child: TextButton(
-                style: MyButtonStyle.randomBgFontLarger(),
-                onPressed: () {
-                  MyChars.locChars().then((value) {
-                    myChars = value;
-                    router.push('/work/link');
-                  });
-                },
-                child: const Text('连连看'),
-              )),
-        ],
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: SingleChildScrollView(
+        child: StaggeredGrid.count(
+          crossAxisCount: 4,
+          mainAxisSpacing: 4,
+          crossAxisSpacing: 4,
+          children: [
+            StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: TextButton(
+                  style: MyButtonStyle.randomBgFontLarger(),
+                  onPressed: () {
+                    GoRouter.of(context).push('/pinyin');
+                  },
+                  child: const Text('拼音'),
+                )),
+            StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: TextButton(
+                  style: MyButtonStyle.randomBgFontLarger(),
+                  onPressed: () {
+                    GoRouter.of(context).push('/hanzi');
+                  },
+                  child: const Text('识字'),
+                )),
+            StaggeredGridTile.count(
+                crossAxisCellCount: 4,
+                mainAxisCellCount: 2,
+                child: TextButton(
+                  style: MyButtonStyle.randomBgFontMaximum(),
+                  onPressed: () {
+                    MyChars.locChars().then((value) {
+                      channel.invokeMethod(keyRouteNative, [
+                        'HandwritingVC',
+                        jsonEncode(value),
+                      ]);
+                    });
+                  },
+                  child: const Text('书写'),
+                )),
+            StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: TextButton(
+                  style: MyButtonStyle.randomBgFontLarger(),
+                  onPressed: () {
+                    MyChars.locChars().then((value) {
+                      myChars = value;
+                      router.push('/work');
+                    });
+                  },
+                  child: const Text('拖一下'),
+                )),
+            StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: TextButton(
+                  style: MyButtonStyle.randomBgFontLarger(),
+                  onPressed: () {
+                    MyChars.locChars().then((value) {
+                      myChars = value;
+                      router.push('/work/link');
+                    });
+                  },
+                  child: const Text('连连看'),
+                )),
+          ],
+        ),
       ),
     );
   }

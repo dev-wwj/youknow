@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routerConfig: router,
       theme: ThemeData(
-        primarySwatch: MyColor.createMaterialColor(MyColor.randomLight()),
+        appBarTheme: AppBarTheme(
+            backgroundColor: MyColor.randomLight(),
+            foregroundColor: Colors.white,
+            shadowColor: Colors.transparent),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     );
   }
 }
-
-
-

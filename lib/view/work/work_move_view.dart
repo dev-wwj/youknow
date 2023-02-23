@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:reorderables/reorderables.dart';
 import 'package:youknow/extension/color_ex.dart';
 import 'package:youknow/model/character_latin.dart';
+import 'package:youknow/module_page/work/work_base.dart';
 
 class WorkMoveView extends StatefulWidget {
   // final List<String> chars;
