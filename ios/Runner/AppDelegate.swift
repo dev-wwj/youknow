@@ -5,6 +5,7 @@ import UIKit
 @objc class AppDelegate: FlutterAppDelegate {
     
     var navi: UINavigationController!
+    var eventSink:FlutterEventSink? = nil
 
     override func application(
         _ application: UIApplication,
@@ -27,9 +28,25 @@ import UIKit
         window.rootViewController = navigation
         navi = navigation
         FlutterPlugin.instance.register(controller)
+        
+        if let messager = controller as? FlutterBinaryMessenger {
+            let channel = FlutterEventChannel(name: "com.push.data", binaryMessenger: messager)
+            channel.setStreamHandler(self)
+        }
+    }
+}
+
+extension AppDelegate: FlutterStreamHandler {
+    func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+        eventSink = events
+        return nil
     }
     
+    func onCancel(withArguments arguments: Any?) -> FlutterError? {
+        return nil
+    }
 }
+
 
 extension AppDelegate {
     override func applicationWillTerminate(_ application: UIApplication) {
